@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="hfupilot.Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="pda_Abmeldung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="i_SessionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pda_Abwesenheit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="i_SessionID" Type="int" Mode="In" />
+          <Parameter Name="i_ID" Type="int" Mode="In" />
+          <Parameter Name="i_Grund" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pda_Anmelden" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="i_Benutzer" Type="varchar" Mode="In" />
+          <Parameter Name="i_Passwort" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="pda_Meldung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="i_SessionID" Type="int" Mode="In" />
+          <Parameter Name="i_ID" Type="int" Mode="In" />
+          <Parameter Name="i_Meldung" Type="varchar" Mode="In" />
+          <Parameter Name="i_AktivBis" Type="datetime" Mode="In" />
+          <Parameter Name="i_Art" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pda_Meldungen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="i_SessionID" Type="int" Mode="In" />
+          <Parameter Name="i_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pda_Stundenplan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="i_SessionID" Type="int" Mode="In" />
+          <Parameter Name="i_Filter" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pda_Verspaetung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="i_SessionID" Type="int" Mode="In" />
+          <Parameter Name="i_ID" Type="int" Mode="In" />
+          <Parameter Name="i_Anzahl" Type="int" Mode="In" />
+          <Parameter Name="i_Grund" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_HandleSession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="i_SessionID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateVerspaetung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="i_SessionID" Type="int" Mode="In" />
+          <Parameter Name="i_PersonDatenplanID" Type="int" Mode="In" />
+          <Parameter Name="i_VerspaetetUm" Type="decimal" Mode="In" />
+          <Parameter Name="i_Kommentar" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="hfupilotModelsStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hfupilot.Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="iWorld_HFU_AddOnEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="pda_Abmeldung" ReturnType="Collection(hfupilot.Models.pda_Abmeldung_Result)">
+            <Parameter Name="i_SessionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pda_Abwesenheit" ReturnType="Collection(hfupilot.Models.pda_Abwesenheit_Result)">
+            <Parameter Name="i_SessionID" Mode="In" Type="Int32" />
+            <Parameter Name="i_ID" Mode="In" Type="Int32" />
+            <Parameter Name="i_Grund" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pda_Anmelden" ReturnType="Collection(hfupilot.Models.pda_Anmelden_Result)">
+            <Parameter Name="i_Benutzer" Mode="In" Type="String" />
+            <Parameter Name="i_Passwort" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pda_Meldung" ReturnType="Collection(hfupilot.Models.pda_Meldung_Result)">
+            <Parameter Name="i_SessionID" Mode="In" Type="Int32" />
+            <Parameter Name="i_ID" Mode="In" Type="Int32" />
+            <Parameter Name="i_Meldung" Mode="In" Type="String" />
+            <Parameter Name="i_AktivBis" Mode="In" Type="DateTime" />
+            <Parameter Name="i_Art" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pda_Meldungen">
+            <Parameter Name="i_SessionID" Mode="In" Type="Int32" />
+            <Parameter Name="i_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pda_Stundenplan">
+            <Parameter Name="i_SessionID" Mode="In" Type="Int32" />
+            <Parameter Name="i_Filter" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="pda_Verspaetung" ReturnType="Collection(hfupilot.Models.pda_Verspaetung_Result)">
+            <Parameter Name="i_SessionID" Mode="In" Type="Int32" />
+            <Parameter Name="i_ID" Mode="In" Type="Int32" />
+            <Parameter Name="i_Anzahl" Mode="In" Type="Int32" />
+            <Parameter Name="i_Grund" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_HandleSession" ReturnType="Collection(hfupilot.Models.sp_HandleSession_Result)">
+            <Parameter Name="i_SessionID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateVerspaetung" ReturnType="Collection(hfupilot.Models.sp_UpdateVerspaetung_Result)">
+            <Parameter Name="i_SessionID" Mode="In" Type="Int32" />
+            <Parameter Name="i_PersonDatenplanID" Mode="In" Type="Int32" />
+            <Parameter Name="i_VerspaetetUm" Mode="In" Type="Decimal" />
+            <Parameter Name="i_Kommentar" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="pda_Abmeldung_Result">
+          <Property Type="Int32" Name="Fehler" Nullable="true" />
+          <Property Type="String" Name="FehlerMeldung" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="pda_Abwesenheit_Result">
+          <Property Type="Int32" Name="Fehler" Nullable="true" />
+          <Property Type="String" Name="FehlerMeldung" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="pda_Anmelden_Result">
+          <Property Type="Int32" Name="Fehler" Nullable="true" />
+          <Property Type="String" Name="Fehlermeldung" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="SessionID" Nullable="true" />
+          <Property Type="Int32" Name="Stufe" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="pda_Meldung_Result">
+          <Property Type="Int32" Name="Fehler" Nullable="true" />
+          <Property Type="String" Name="FehlerMeldung" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="pda_Verspaetung_Result">
+          <Property Type="Int32" Name="Fehler" Nullable="true" />
+          <Property Type="String" Name="FehlerMeldung" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_HandleSession_Result">
+          <Property Type="Int32" Name="Fehler" Nullable="true" />
+          <Property Type="String" Name="Fehlermeldung" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_UpdateVerspaetung_Result">
+          <Property Type="Int32" Name="Fehler" Nullable="true" />
+          <Property Type="String" Name="Fehlermeldung" Nullable="true" MaxLength="255" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="hfupilotModelsStoreContainer" CdmEntityContainer="iWorld_HFU_AddOnEntities" >
+          <FunctionImportMapping FunctionImportName="pda_Abmeldung" FunctionName="hfupilot.Models.Store.pda_Abmeldung">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hfupilot.Models.pda_Abmeldung_Result">
+                <ScalarProperty Name="Fehler" ColumnName="Fehler" />
+                <ScalarProperty Name="FehlerMeldung" ColumnName="FehlerMeldung" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pda_Abwesenheit" FunctionName="hfupilot.Models.Store.pda_Abwesenheit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hfupilot.Models.pda_Abwesenheit_Result">
+                <ScalarProperty Name="Fehler" ColumnName="Fehler" />
+                <ScalarProperty Name="FehlerMeldung" ColumnName="FehlerMeldung" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pda_Anmelden" FunctionName="hfupilot.Models.Store.pda_Anmelden">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hfupilot.Models.pda_Anmelden_Result">
+                <ScalarProperty Name="Fehler" ColumnName="Fehler" />
+                <ScalarProperty Name="Fehlermeldung" ColumnName="Fehlermeldung" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="Stufe" ColumnName="Stufe" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pda_Meldung" FunctionName="hfupilot.Models.Store.pda_Meldung">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hfupilot.Models.pda_Meldung_Result">
+                <ScalarProperty Name="Fehler" ColumnName="Fehler" />
+                <ScalarProperty Name="FehlerMeldung" ColumnName="FehlerMeldung" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pda_Meldungen" FunctionName="hfupilot.Models.Store.pda_Meldungen" />
+          <FunctionImportMapping FunctionImportName="pda_Stundenplan" FunctionName="hfupilot.Models.Store.pda_Stundenplan" />
+          <FunctionImportMapping FunctionImportName="pda_Verspaetung" FunctionName="hfupilot.Models.Store.pda_Verspaetung">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hfupilot.Models.pda_Verspaetung_Result">
+                <ScalarProperty Name="Fehler" ColumnName="Fehler" />
+                <ScalarProperty Name="FehlerMeldung" ColumnName="FehlerMeldung" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_HandleSession" FunctionName="hfupilot.Models.Store.sp_HandleSession">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hfupilot.Models.sp_HandleSession_Result">
+                <ScalarProperty Name="Fehler" ColumnName="Fehler" />
+                <ScalarProperty Name="Fehlermeldung" ColumnName="Fehlermeldung" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_UpdateVerspaetung" FunctionName="hfupilot.Models.Store.sp_UpdateVerspaetung">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hfupilot.Models.sp_UpdateVerspaetung_Result">
+                <ScalarProperty Name="Fehler" ColumnName="Fehler" />
+                <ScalarProperty Name="Fehlermeldung" ColumnName="Fehlermeldung" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
