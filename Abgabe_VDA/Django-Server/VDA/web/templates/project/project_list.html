@@ -1,0 +1,38 @@
+﻿{% extends "web/layout.html" %}
+
+{% block content %}
+<main>
+    <div id="ProjectContainer" class="container">
+        <div class="row">
+            <div class="col-12"><h1>{{ title }}</h1></div>
+            {{FormMessage | safe }}
+        </div>
+        <div class="row">
+            {% if projectlist %}
+                {% for project in projectlist %}
+                <div class="col-md-4 col-sm-6 col-12">
+                    <ul class="ProjectNavigation">
+                        <li><a href="{% url 'project_edit' %}?ProjectID={{project.ProjectID}}"><i class="linearicons linearicons-pencil3" title="bearbeiten"></i></a></li>
+                        <li><a href="{% url 'project_list'%}?ProjectID={{project.ProjectID}}" class="delete" onclick="return confirm('Löschen ?')" ><i class="linearicons linearicons-trash2" title="löschen"></i></a></li>
+                    </ul>
+                    <div class="projectPanel" data-projectid="{{project.ProjectID}}">
+                        <h2>{{project.ProjectDisplayName}}</h2>
+                        <b>Laufzeit</b><br />
+                        {{project.StartDate}} - {{project.EndDate}}                            
+                    </div>
+                </div>
+                {% endfor %}
+            <div class="col-md-4 col-sm-6 col-12">
+                <div class="projectPanel" data-projectid="{{project.ProjectID}}">
+                        <h2>Projekt erfassen</h2>
+                        <a href="{% url 'project_edit' %}" class="primaryButton">Neues Projekt erstellen</a>
+                    </div>
+                </div>
+            {% else %}
+                <b>Es ist kein Projekt erfasst</b>
+            {% endif %}
+
+        </div>
+    </div>
+</main>
+{% endblock %}

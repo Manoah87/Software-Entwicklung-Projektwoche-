@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "css/lib/bootstrap-grid.css",
+    "inputFile": "css/lib/bootstrap-grid.less"
+  },
+  {
+    "outputFile": "css/lib/toastr.css",
+    "inputFile": "css/lib/toastr.less"
+  },
+  {
+    "outputFile": "css/VDA.css",
+    "inputFile": "css/VDA.less"
+  },
+  {
+    "outputFile": "css/VDA_style.css",
+    "inputFile": "css/VDA_style.less"
+  },
+  {
+    "outputFile": "css/fonts.css",
+    "inputFile": "css/fonts.less"
+  }
+]

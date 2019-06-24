@@ -1,0 +1,52 @@
+﻿{% extends "web/layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form method="post">
+                {% csrf_token %}
+                <div class="formPanel" >
+                    <div class="fieldWrapper">
+                        {{ form.SensorCodeName.errors }}
+                        {{ form.SensorCodeName.label_tag }}
+                        {{ form.SensorCodeName }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.SensorDisplayName.errors }}
+                        {{ form.SensorDisplayName.label_tag }}
+                        {{ form.SensorDisplayName }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.SensorType.errors }}
+                        {{ form.SensorType.label_tag }}
+                        {{ form.SensorType }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.GPIO.errors }}
+                        {{ form.GPIO.label_tag }}
+                        {{ form.GPIO }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.Description.errors }}
+                        {{ form.Description.label_tag }}
+                        {{ form.Description }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.ShowOnHome.errors }}
+                        {{ form.ShowOnHome }}
+                        {{ form.ShowOnHome.label_tag }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.SensorUnit.errors }}
+                        {{ form.SensorUnit.label_tag }}
+                        {{ form.SensorUnit }}
+                    </div>
+                <input type="submit" value="Speichern" class="primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

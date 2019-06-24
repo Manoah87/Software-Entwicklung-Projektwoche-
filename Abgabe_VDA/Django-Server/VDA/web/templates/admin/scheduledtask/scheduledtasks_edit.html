@@ -1,0 +1,72 @@
+﻿{% extends "web/layout.html" %}
+
+{% block content %}
+    <main id="ScheduledTasks">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>{{ title }}</h1>
+                </div>
+                <div class="col-12" id="ListEventLog">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="formPanel">
+                            <div class="fieldWrapper">
+                                {{ form.TaskCodeName.errors }}
+                                {{ form.TaskCodeName.label_tag }}
+                                {{ form.TaskCodeName }}
+                            </div>
+                            <div class="fieldWrapper">
+                                {{ form.TaskNameDisplay.errors }}
+                                {{ form.TaskNameDisplay.label_tag }}
+                                {{ form.TaskNameDisplay }}
+                            </div>
+                            <div class="fieldWrapper">
+                                {{ form.FilePath.errors }}
+                                {{ form.FilePath.label_tag }}
+                                {{ form.FilePath }}
+                            </div>
+                            <div class="fieldWrapper">
+                                {{ form.ObjectType.errors }}
+                                {{ form.ObjectType.label_tag }}
+                                {{ form.ObjectType }}
+                            </div>
+                            <div class="fieldWrapper">
+                                {{ form.ObjectID.errors }}
+                                {{ form.ObjectID.label_tag }}
+                                {{ form.ObjectID }}
+                            </div>
+                            <div class="fieldWrapper">
+                                {{ form.Interval.errors }}
+                                {{ form.Interval.label_tag }}
+                                {{ form.Interval }}
+                            </div>
+                            <div class="fieldWrapper">
+                                {{ form.LastRunTime.errors }}
+                                {{ form.LastRunTime.label_tag }}
+                                {{ form.LastRunTime }}
+                            </div>
+                            <div class="fieldWrapper">
+                                {{ form.NextRunTime.errors }}
+                                {{ form.NextRunTime.label_tag }}
+                                {{ form.NextRunTime }}
+                            </div>
+                            <div class="fieldWrapper">
+                                {{ form.DeleteAfterLastRun.errors }}
+                                {{ form.DeleteAfterLastRun.label_tag }}
+                                {{ form.DeleteAfterLastRun }}
+                            </div>
+                            <div class="fieldWrapper">
+                                {{ form.Enabled.errors }}
+                                {{ form.Enabled }}
+                                {{ form.Enabled.label_tag }}
+                            </div>
+
+                        </div>
+                        <input type="submit" value="Submit">
+                    </form>
+                    </div>
+                </div>
+            </div>
+    </main>
+{% endblock %}

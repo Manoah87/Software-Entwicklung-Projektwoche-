@@ -1,0 +1,63 @@
+﻿{% extends "web/layout.html" %}
+
+{% block content %}
+{% load staticfiles%}
+<main id="profil">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+            <h1>{{ title }}.</h1>
+            <p>{{ message }}</p>
+
+            <div class="formPanel" >
+            <form>
+                <div class="fieldWrapper">
+                    {{ form.Username.errors }}
+                    {{ form.Username.label_tag }}
+                    {{ form.Username }}
+                </div>
+                <div class="fieldWrapper radioButtonList" style="display:none;">
+                    {{ form.Salutation.errors }}
+                    {{ form.Salutation.label_tag }}
+                    {{ form.Salutation }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.Firstname.errors }}
+                    {{ form.Firstname.label_tag }}
+                    {{ form.Firstname}}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.Lastname.errors }}
+                    {{ form.Lastname.label_tag }}
+                    {{ form.Lastname }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.Mail.errors }}
+                    {{ form.Mail.label_tag }}
+                    {{ form.Mail }}
+                </div>
+                 <div class="fieldWrapper">
+                    {{ form.Birthdate.errors }}
+                    {{ form.Birthdate.label_tag }}
+                    {{ form.Birthdate }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.Userprivilegelevel.errors }}
+                    {{ form.Userprivilegelevel.label_tag }}
+                    {{ form.Userprivilegelevel }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.UserEnabled }}
+                    {{ form.UserEnabled.label_tag }}
+                    {{ form.UserEnabled.errors }}
+                </div>
+                <div class="fieldWrapper">
+                    <input type="submit" value="Speichern" class="primary" />
+                </div>
+            </form>
+                </div>
+                </div>
+            </div>
+    </div>
+</main>
+{% endblock %}

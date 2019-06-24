@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home - VDA</title>
+    <link rel="icon" type="image/png" href="/images/icon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/icon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/icon/favicon-96x96.png" sizes="96x96" />
+</head>
+<body>
+    <header>
+        <div class="TopHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12">
+                        <img src="images/logo.png" id="Logo" />
+                    </div>
+                    <div class="col-lg-8 col-md-12 FunctionNavigationFrame">
+                        <ul id="FunctionNavigation">
+                            <li><a href="#">Kontakt</a></li>
+                            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HeaderNav">
+            <div class="container">
+                <div class="row">
+                    <!--<div class="col-md-6 col-sm-2 col-1">&nbsp;</div>-->
+                    <nav class="col-md-8 col-sm-10 col-12" id="MainNavigationFrame">
+                        <ul class="MainNavigation">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="sensoren.html">Sensoren</a></li>
+                            <li><a href="relay_control.html" class="active">Relais</a></li>
+                            <li><a href="profil.html">Profil</a></li>
+                            <li><a href="scheduledtask.html">Geplante Aufgaben</a></li>
+                            <li><a href="eventlog.html">Eventlog</a></li>
+                        </ul>
+                    </nav>
+                    <div class="MobileMenu">
+                        <span class="hamburgerLine"></span>
+                        <span class="hamburgerLine"></span>
+                        <span class="hamburgerLine"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main id="RelayControl">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Relais Verwaltung
+                    Readme: Keine Radio Buttons. Da wir sonst das Formular dynamisch generieren müssten.
+                    Es reicht, wenn es mit divs und css erstellst wird. Anzeige, ob das Relais ein ist oder nicht
+                    muss über die Klasse "active" bei jedem RelayPanel gesetzt werden können.
+                    Plus Box, über welche ein neues Relais erstellt werden kann.
+                    Kreis: <div class="circle" style="border-radius:90%; border:2px solid;width:10px;height:10px;"></div> ^^-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="relayControl relayHover">
+                        <h2>Relais 1</h2>
+                        <ul>
+                            <li class="on">Ein</li>
+                            <li class="off">Aus</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="relayControl active relayHover">
+                        <h2>Relais 2</h2>
+                        <ul>
+                            <li class="on">Ein</li>
+                            <li class="off">Aus</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="relayControl">
+                        <h2>Relais erfassen</h2>
+                        <div><a class="primaryButton" href="/relayedit">neues Relais erfassen</a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">&copy; Copyright 2019</div>
+                <!--<div class="col-6">Meta nav</div>-->
+            </div>
+        </div>
+    </footer>
+
+    <link href="css/lib/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="css/lib/toastr.min.css" rel="stylesheet" />
+    <link href="css/fonts.min.css" rel="stylesheet" />
+    <link href="css/VDA_style.css" rel="stylesheet" />
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/toastr.min.js"></script>
+    <script src="js/base_functions.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

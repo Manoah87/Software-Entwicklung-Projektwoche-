@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home - VDA</title>
+    <link rel="icon" type="image/png" href="/images/icon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/icon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/icon/favicon-96x96.png" sizes="96x96" />
+</head>
+<body>
+    <header>
+        <div class="TopHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12">
+                        <img src="images/logo.png" id="Logo" />
+                    </div>
+                    <div class="col-lg-8 col-md-12 FunctionNavigationFrame">
+                        <ul id="FunctionNavigation">
+                            <li><a href="#">Kontakt</a></li>
+                            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HeaderNav">
+            <div class="container">
+                <div class="row">
+                    <nav class="col-md-8 col-sm-10 col-12" id="MainNavigationFrame">
+                        <ul class="MainNavigation">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="sensoren.html">Sensoren</a></li>
+                            <li><a href="relay_control.html">Relais</a></li>
+                            <li><a href="profil.html" class="active">Profil</a></li>
+                            <li><a href="scheduledtask.html">Geplante Aufgaben</a></li>
+                            <li><a href="eventlog.html">Eventlog</a></li>
+                        </ul>
+                    </nav>
+                    <div class="MobileMenu">
+                        <span class="hamburgerLine"></span>
+                        <span class="hamburgerLine"></span>
+                        <span class="hamburgerLine"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main id="profil">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="formPanel">
+                        <form>
+                            <div class="fieldWrapper">
+                                <label for="id_Username">Benutzername*</label>
+                                <input type="text" name="Username" maxlength="100" required="" id="id_Username">
+                            </div>
+                            <div class="fieldWrapper radioButtonList" style="display:none;">
+                                <label for="id_Salutation_0">Anrede</label>
+                                <ul id="id_Salutation">
+                                    <li>
+                                        <label for="id_Salutation_0">
+                                            <input type="radio" name="Salutation" value="Frau" id="id_Salutation_0">
+                                            <span>Frau</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label for="id_Salutation_1">
+                                            <input type="radio" name="Salutation" value="Mann" id="id_Salutation_1">
+                                            <span>Mann</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="fieldWrapper">
+                                <label for="id_Firstname">Vorname</label>
+                                <input type="text" name="Firstname" maxlength="254" id="id_Firstname">
+                            </div>
+                            <div class="fieldWrapper">
+                                <label for="id_Lastname">Nachname</label>
+                                <input type="text" name="Lastname" maxlength="254" id="id_Lastname">
+                            </div>
+                            <div class="fieldWrapper">
+                                <label for="id_Mail">E-Mail*</label>
+                                <input type="email" name="Mail" maxlength="254" required="" id="id_Mail">
+                            </div>
+                            <div class="fieldWrapper">
+                                <label for="id_Birthdate">Geburtstag</label>
+                                <input type="text" name="Birthdate" maxlength="254" id="id_Birthdate">
+                            </div>
+                            <div class="fieldWrapper">
+                                <label for="id_Userprivilegelevel">Privileg Level</label>
+                                <select name="Userprivilegelevel" id="id_Userprivilegelevel">
+                                    <option value="0">keines</option>
+                                    <option value="1">Editor</option>
+                                    <option value="2">Administrator</option>
+                                </select>
+                            </div>
+                            <div class="fieldWrapper">
+                                <input type="checkbox" name="UserEnabled" required="" id="id_UserEnabled">
+                                <label for="id_UserEnabled">Benutzer aktiviert</label>
+                            </div>
+                            <div class="fieldWrapper">
+                                <input type="submit" value="Save">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">&copy; Copyright 2019</div>
+            </div>
+        </div>
+    </footer>
+
+    <link href="css/lib/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="css/lib/toastr.min.css" rel="stylesheet" />
+    <link href="css/fonts.min.css" rel="stylesheet" />
+    <link href="css/VDA_style.css" rel="stylesheet" />
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/toastr.min.js"></script>
+    <script src="js/base_functions.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+﻿{% extends "web/layout.html" %}
+
+{% block content %}
+{% load staticfiles%}
+   <main id="RelayControl">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Relais Steuerung</h1>
+                </div>
+            </div>
+            <div class="row">
+                {% if relatedRelaisList %}
+                    {% for relais in relatedRelaisList %}
+                        <div class="col-md-4 col-sm-6">
+                            <div class="relayControl relayHover" data-gpio="{{relais.GPIO}}" id="Relais{{relais.RelaisID}}">
+                                <ul class="relaisNavigation">
+                                     <li><a href="?RelationID={{relais.RelaisID}}" class="delete" onclick="return confirm('Löschen ?')"><i class="linearicons linearicons-trash2" title="löschen"></i></a></li>
+                                </ul>
+                                <h2>{{relais.RelaisDisplayName}}</h2>
+                                <ul>
+                                    <li class="on">Ein</li>
+                                    <li class="off">Aus</li>
+                                </ul>
+                            </div>
+                        </div>
+                    
+                    {% endfor %}
+
+                {% else %}
+                    <div class="col-md-4 col-sm-6">
+                        <div class="relayControl">
+                            <p>Kein Relais Zugewiesen</p>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="relayControl">
+                        <h2>Relais Zuweisen</h2>
+                        <div class="formPanel">
+                            {{FormMessage | safe }}
+                            <div class="formPanel">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="fieldWrapper relationForm">
+                                {{ RelationForm }}
+                                <input type="submit" value="Speichern" class="primary">
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h2>Relais Verwalten</h2>
+                    <a href="{% url 'relaisedit' %}">Neues Relais erfassen</a>
+
+                    {% if relaislist %}
+                        <table class="striped">
+                            <tr>
+                                <th>RelaisID</th>
+                                <th>Name</th>
+                                <th>GPIO</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            {% for relais in relaislist %}
+                                <tr>
+                                    <td>{{relais.RelaisID}}</td>
+                                    <td>{{relais.RelaisDisplayName}}</td>
+                                    <td>{{relais.GPIO}}</td>
+                                    <td> <a href="{% url 'relaisedit'%}?RelaisID={{relais.RelaisID}}"><i class="linearicons linearicons-pencil3" title="bearbeiten"></i></a> | <a href="?RelaisID={{relais.RelaisID}}" class="delete"><i class="linearicons linearicons-trash2" title="löschen"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% else %}
+                        <p>Es wurde kein Relais erstellt</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

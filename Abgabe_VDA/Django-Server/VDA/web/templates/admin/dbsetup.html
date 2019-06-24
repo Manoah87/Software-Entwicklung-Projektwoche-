@@ -1,0 +1,18 @@
+﻿{% extends "web/layout.html" %}
+
+{% block content %}
+    {% load staticfiles%}
+<main style="margin:20px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>DB-Setup</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name="InitDB" id="InitDB" class="primaryButton">Setup DB</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

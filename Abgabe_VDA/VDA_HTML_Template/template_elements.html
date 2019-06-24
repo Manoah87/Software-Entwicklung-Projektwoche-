@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Template Elements - VDA</title>
+    <link rel="icon" type="image/png" href="/img/icon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/img/icon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/img/icon/favicon-96x96.png" sizes="96x96" />
+    <link href="css/lib/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="css/lib/toastr.min.css" rel="stylesheet" />
+    <link href="css/VDA_style.css" rel="stylesheet" />
+</head>
+<body>
+    <header></header>
+    <main id="PageContent">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Template Elemnts</h1>
+                    <p>Einige Elemente wie die Seite Aufgebaut werden könnte</p>
+                    <hr />
+                </div>
+                <div class="col-12">
+                        <h2>Formular (Profil)</h2>
+                        <form>
+                            <div class="formPanel">
+                                <div class="fieldWrapper">
+
+                                    <label for="id_username">Benutzername*</label>
+                                    <input type="text" name="username" maxlength="254" required="" id="id_username">
+                                </div>
+                                <div class="fieldWrapper radioButtonList">
+                                    <label for="id_salutation_0">Anrede</label>
+                                    <ul id="id_salutation">
+                                        <li>
+                                            <label for="id_salutation_0">
+                                                <input type="radio" name="salutation" value="Frau" id="id_salutation_0">
+                                                <span>Frau</span>
+                                            </label>
+
+                                        </li>
+                                        <li>
+                                            <label for="id_salutation_1">
+                                                <input type="radio" name="salutation" value="Mann" id="id_salutation_1">
+                                                <span>Mann</span>
+                                            </label>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="fieldWrapper">
+
+                                    <label for="id_firstname">Vorname</label>
+                                    <input type="text" name="firstname" maxlength="254" id="id_firstname">
+                                </div>
+                                <div class="fieldWrapper">
+
+                                    <label for="id_lastname">Nachname</label>
+                                    <input type="text" name="lastname" maxlength="254" id="id_lastname">
+                                </div>
+                                <div class="fieldWrapper">
+
+                                    <label for="id_mail">E-Mail*</label>
+                                    <input type="email" name="mail" maxlength="254" required="" id="id_mail">
+                                </div>
+                                <div class="fieldWrapper">
+
+                                    <label for="id_birthdate">Geburtstag</label>
+                                    <input type="text" name="birthdate" maxlength="254" id="id_birthdate">
+                                </div>
+                                <div class="fieldWrapper">
+
+                                    <label for="id_userprivilegelevel">Privileg Level</label>
+                                    <select name="userprivilegelevel" id="id_userprivilegelevel">
+                                        <option value="0">keines</option>
+
+                                        <option value="1">Editor</option>
+
+                                        <option value="2">Administrator</option>
+
+                                    </select>
+                                </div>
+                                <div class="fieldWrapper">
+                                    <input type="checkbox" name="userEnabled" required="" id="id_userEnabled">
+                                    <label for="id_userEnabled">Benutzer aktiviert</label>
+                                </div>
+                                <div class="fieldWrapper">
+                                    <input type="submit" value="Save" class="primary">
+                                </div>
+                            </div>
+                        </form>
+                    <hr />
+                </div>
+                <div class="col-12">
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container"></div>
+    </footer>
+</body>
+</html>

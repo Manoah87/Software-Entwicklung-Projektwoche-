@@ -1,0 +1,482 @@
+﻿/*
+
+    1. Standart Helper und Styles
+
+    2. Masterpage (Header & Footer)                                                 
+                                                                                 
+    3. Home       
+    
+    4. Relaissteuerung
+
+    5. Login
+
+    6.Projekt
+
+    7. Event-Log
+
+    ext. Template Elements                                            
+*/
+/*============= 1. Standart Helper und Styles =============*/
+html {
+  font-size: 100%;
+}
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #f5fbef;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+  font-size: 2.375rem;
+}
+h2 {
+  font-size: 1.6rem;
+}
+a {
+  color: #94C11F;
+  transition: color ease 0.3s;
+  text-decoration: none;
+}
+a:hover,
+a.active {
+  color: #1D4831;
+}
+img {
+  max-width: 100%;
+}
+main {
+  margin-bottom: 30px;
+}
+table.striped {
+  border-spacing: 0;
+}
+table.striped td,
+table.striped th {
+  padding: 5px;
+  border: none;
+  transition: background-color ease-in-out 0.4s, color ease-in-out 0.4s;
+}
+table.striped tr:nth-child(2n + 1) td {
+  background-color: rgba(128, 128, 128, 0.25);
+}
+table.striped tr:hover td {
+  background-color: rgba(29, 72, 49, 0.5);
+  color: #FFF !important;
+}
+table.striped tr:hover a:hover {
+  color: #FFF !important;
+}
+table.striped th {
+  background-color: transparent;
+  border-bottom: 2px solid #e48b03;
+}
+/*============= 2. Header und Footer  =============*/
+header .TopHeader {
+  display: block;
+}
+header .TopHeader .container {
+  padding-top: 15px;
+}
+header #Logo {
+  max-width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+header .FunctionNavigationFrame {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+header #FunctionNavigation {
+  list-style: none;
+  float: right;
+  display: flex;
+}
+header #FunctionNavigation li {
+  margin-right: 15px;
+}
+header nav#MainNavigationFrame {
+  position: absolute;
+  right: 0;
+  left: 0;
+  background-color: #f5fbef;
+  z-index: 10;
+  height: 0;
+  overflow: hidden;
+  transition: height ease-in-out 0.5s;
+}
+header nav#MainNavigationFrame::before {
+  position: absolute;
+  background-color: #333;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  overflow: hidden;
+  z-index: 20;
+}
+header nav#MainNavigationFrame ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  list-style: none;
+  padding-left: 0;
+}
+header nav#MainNavigationFrame ul li a {
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+header .MobileMenu {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  left: 15px;
+  top: -39px;
+  cursor: pointer;
+}
+header .MobileMenu .hamburgerLine {
+  height: 5px;
+  width: 30px;
+  background-color: #333;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  display: block;
+}
+footer {
+  line-height: 4rem;
+  background-color: #333;
+  color: #FFF;
+}
+@media (min-width: 768px) {
+  .testBox {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media (min-width: 992px) {
+  header .FunctionNavigationFrame {
+    border-top: none;
+    border-bottom: none;
+  }
+  header .MobileMenu {
+    display: none;
+  }
+  header nav#MainNavigationFrame {
+    position: static;
+    height: auto;
+  }
+  header nav#MainNavigationFrame::before {
+    display: none;
+  }
+  header nav#MainNavigationFrame ul {
+    flex-direction: row;
+    height: auto !important;
+  }
+  header nav#MainNavigationFrame ul li {
+    width: auto;
+  }
+}
+/*============= 3. Home =============*/
+#Home .currentValue {
+  box-shadow: -2px 1px 14px rgba(0, 0, 0, 0.75);
+  margin-bottom: 30px;
+  padding: 30px;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 25px;
+}
+#Home .linkSensor {
+  font-size: 0.75rem;
+}
+#Home .SensorSelector {
+  height: 30px;
+  width: auto;
+  padding: 5px 15px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.75);
+  background-color: #f5fbef;
+  border: none;
+}
+/*============= 4. Relaissteuerung =============*/
+#RelayControl .relayControl {
+  margin-bottom: 30px;
+  padding: 30px;
+  background-color: #CCC;
+  color: #FFF;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: color ease 0.3s;
+  position: relative;
+}
+#RelayControl .relayControl .relaisNavigation {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  display: flex;
+  list-style: none;
+  z-index: 12;
+}
+#RelayControl .relayControl .relaisNavigation li {
+  margin-left: 15px;
+}
+#RelayControl .relayControl .relaisNavigation li a {
+  font-size: 1.5rem;
+}
+#RelayControl .relayControl ul {
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+#RelayControl .relayControl ul li {
+  padding-left: 30px;
+  position: relative;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+#RelayControl .relayControl ul li::before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 400;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  position: absolute;
+  left: 0;
+}
+#RelayControl .relayControl ul li.off::before {
+  content: "\f111";
+  font-weight: 900;
+}
+#RelayControl .relayControl ul li.on::before {
+  content: "\f111";
+}
+#RelayControl .relayControl.active li.off::before {
+  content: "\f111";
+  font-weight: 400;
+}
+#RelayControl .relayControl.active li.on::before {
+  content: "\f111";
+  font-weight: 900;
+}
+#RelayControl .relayHover:hover {
+  color: #1D4831;
+}
+#RelayControl .primaryButton {
+  margin-top: 15px;
+}
+#RelayControl .relationForm select {
+  width: 100%;
+  margin-bottom: 10px;
+}
+/*============= 5. Login =============*/
+.LoginContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-image: url(../images/hg_login.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+}
+.LoginFrame {
+  background-color: #FFF;
+  width: 100%;
+  max-width: 350px;
+  height: 100%;
+  max-height: 500px;
+  align-self: center;
+  box-shadow: inset 0 0 10px #000000;
+}
+/*============= 6. Projekt =============*/
+/*>>> Mobile Frist <<<*/
+#ProjectContainer .projectPanel {
+  position: relative;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.75);
+  margin-bottom: 30px;
+  padding: 30px;
+  border-radius: 15px;
+}
+#ProjectContainer .ProjectNavigation {
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  display: flex;
+  list-style: none;
+  z-index: 12;
+}
+#ProjectContainer .ProjectNavigation li {
+  margin-left: 15px;
+}
+#ProjectContainer .ProjectNavigation li a {
+  font-size: 1.5rem;
+}
+/*============= 7. Event-Log =============*/
+#ModalPopup {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #f5fbef;
+  z-index: 10;
+}
+#ModalPopup .container {
+  margin-top: 100px;
+}
+#ModalPopup .primaryButton {
+  margin-top: 25px;
+}
+/*============= ext. Template Elements =============*/
+.formPanel {
+  max-width: 700px;
+}
+.formPanel .fieldWrapper {
+  margin-bottom: 20px;
+}
+.formPanel .fieldWrapper label {
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.formPanel .fieldWrapper input[type=text],
+.formPanel .fieldWrapper input[type=email],
+.formPanel .fieldWrapper input[type=date],
+.formPanel .fieldWrapper input[type=number],
+.formPanel .fieldWrapper select {
+  height: 40px;
+  width: 100%;
+  padding: 5px 15px;
+  /*box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.75);*/
+  background-color: #f5fbef;
+  /*border: none;*/
+}
+.formPanel .fieldWrapper textarea {
+  width: 100%;
+  padding: 5px 15px;
+  /*box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.75);*/
+  background-color: #f5fbef;
+  /*border: none;*/
+}
+.formPanel .fieldWrapper input[type=checkbox] {
+  display: none;
+}
+.formPanel .fieldWrapper input[type=checkbox] + label,
+.formPanel .fieldWrapper input[type=radio] + span {
+  padding-left: 30px;
+  position: relative;
+}
+.formPanel .fieldWrapper input[type=checkbox] + label:before,
+.formPanel .fieldWrapper input[type=radio] + span:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Linearicons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.25rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.formPanel .fieldWrapper input[type=checkbox] + label:before {
+  content: "\ec8d ";
+}
+.formPanel .fieldWrapper input[type=checkbox]:checked + label:before {
+  content: "\ec99";
+}
+.formPanel .fieldWrapper.radioButtonList ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.formPanel .fieldWrapper.radioButtonList ul li {
+  margin-right: 20px;
+}
+.formPanel .fieldWrapper input[type=radio] {
+  display: none;
+}
+.formPanel .fieldWrapper input[type=radio] + span:before {
+  content: "\ec9d ";
+}
+.formPanel .fieldWrapper input[type=radio]:checked + span:before {
+  content: "\ec9e";
+}
+.formPanel input[type=submit].primary {
+  transition: all ease-in-out 0.3s;
+  border: 1px solid #94C11F;
+  color: #94C11F;
+  background-color: #F5FBEF;
+  height: 40px;
+  padding: 0 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.formPanel input[type=submit].primary:hover {
+  background-color: #94C11F;
+  color: #f5fbef;
+}
+.relationForm {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.relationForm select {
+  width: 100%;
+  max-width: 250px;
+}
+.relationForm .errorlist {
+  order: -1;
+  width: 100%;
+}
+.primaryButton {
+  padding: 10px 30px;
+  border-radius: 5px;
+  background-color: #656565;
+  transition: background-color ease-in-out 0.3s;
+  display: inline-block;
+  max-width: 100%;
+  border: 1px solid #656565;
+}
+.primaryButton:hover {
+  background-color: #F5FBEF;
+}
+p.error,
+p.succes {
+  margin-top: 0;
+  margin-left: 15px;
+  font-weight: bold;
+}
+p.error,
+.delete {
+  color: #b72a2a !important;
+}
+p.success {
+  color: green;
+}
+/*============= X.1 table =============*/
+.table {
+  display: table;
+  width: 100%;
+}
+.tr {
+  display: table-row;
+}
+.td {
+  display: table-cell;
+  border: 2px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+}

@@ -1,0 +1,77 @@
+﻿{% extends "web/layout.html" %}
+
+{% block content %}
+{% load staticfiles%}
+<main id="sensor">
+    <div class="container">
+        <div class="row">
+            <div class="col-12"><h2>{{ title }}</h2></div>
+            <div class="col-md-6 col-12">
+                <h3>{{ message }}</h3>
+                <h2>Liste der Sensoren</h2>
+                <a href="/sensoredit">Neuer Sensor erfassen</a>
+                {% if sensorlist %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <table class="striped">
+                            <tr>
+                                <th>Sensor ID</th>
+                                <th>Sensorname</th>
+                                <th>GPIO</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            {% for sensor in sensorlist %}
+                                <tr>
+                                    <td>{{sensor.SensorID}}</td>
+                                    <td>{{sensor.SensorCodeName}}</td>
+                                    <td>{{sensor.GPIO}}</td>
+                                    <td><a href="/sensoredit?SensorID={{sensor.SensorID}}"><i class="linearicons linearicons-pencil3" title="bearbeiten"></i></a> | <a href="?SensorID={{sensor.SensorID}}" class="delete" onclick="return confirm('Löschen ?')" ><i class="linearicons linearicons-trash2" title="löschen"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </form>
+                {% else %}
+                  <p>Keine Sensoren gefunden</p>
+                {% endif %}
+            </div>
+            <div class="col-md-6 col-12">
+                <h2>Sensor dem aktiven Projekt hinzufügen</h2>
+                {{FormMessage | safe}}
+                <div class="formPanel">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="fieldWrapper relationForm">
+                            {{ projectSensorForm }}
+                            <input type="submit" value="Speichern" class="primary" >
+                        </div>
+                    </form>
+                </div>
+                <h2>Liste der zugewiesenen Sensoren</h2>
+                <p>Werden auf der Startseite im Dropdown Menu angezeigt und können bei den Geplanten aufgaben hinzugefügt werden.</p>
+                {{RelationFormMessage}}
+                {% if projectSensorForm %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <table class="striped">
+                            <tr>
+                                <th>Sensor ID</th>
+                                <th>Sensornamen</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            {% for sensor in projectsensorlist %}
+                                <tr>
+                                    <td>{{sensor.SensorID}}</td>
+                                    <td>{{sensor.SensorDisplayName}}</td>
+                                    <td> <a href="?RelationID={{sensor.SensorID}}" class="delete" onclick="return confirm('Löschen ?')" ><i class="linearicons linearicons-trash2" title="löschen"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </form>
+                {% else %}
+                  <p>Keine Sensoren gefunden</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

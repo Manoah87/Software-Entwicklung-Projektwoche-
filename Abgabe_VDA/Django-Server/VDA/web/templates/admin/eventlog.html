@@ -1,0 +1,52 @@
+﻿{% extends "web/layout.html" %}
+
+{% block content %}
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Eventlog</h1>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{FilterForm}}
+                        <button type="submit" name="FilterDB" id="filter">Filter</button>
+                    </form>
+                </div>
+                <div class="col-12" id="ListEventLog">
+                    {% if eventlist %}
+                    <table class="striped">
+                        <tr> 
+                            <th>Event ID</th>
+                            <th>Eventtyp</th>
+                            <th>Ursprung</th>
+                            <th>EventTime</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        {% for event in eventlist %}
+                        <tr class="EventType">
+                            <td>{{event.EventID}}</td>
+                            <td>{{event.EventType}}</td>
+                            <td>{{event.Source}}</td>
+                            <td>{{event.EventTime}}</td>
+                            <td>
+                                <a class="openView" data-eventid="{{event.EventID}}" href="#"><i class="linearicons linearicons-eye" title="anzeigen"></i></a> | 
+                                <a href="{% url 'eventlog'%}?EventID={{event.EventID}}" class="delete"><i class="linearicons linearicons-trash2" title="löschen"></i></a>
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                    {% else %}
+                        <p>Es wurden keine Einträge gefunden</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="ModalPopup">
+        <div class="container">
+            <h2>Event Detail</h2>
+            <div class="content"></div>
+            <a href="#" class="primaryButton" >Schliessen</a>
+        </div>
+    </div>
+{% endblock %}

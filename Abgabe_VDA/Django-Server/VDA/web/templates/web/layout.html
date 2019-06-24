@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }} - GreenPI Eco Technology</title>
+    {% load staticfiles %}
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon-16x16.png' %}" />
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon-32x32.png' %}" />
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon-96x96.png' %}" />
+</head>
+<body>
+    <header>
+        <div class="TopHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12">
+                        <img src="{% static 'images/logo.png' %}" id="Logo" />
+                    </div>
+                    <div class="col-lg-8 col-md-12 FunctionNavigationFrame">
+                        <ul id="FunctionNavigation">
+                            <li><a href="{% url 'setup' %}" {% if currentPage == "setup" %}class="active"{%endif%} >Setup</a></li>
+                            <li><a href="#">Kontakt</a></li>
+                            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="HeaderNav">
+            <div class="container">
+                <div class="row">
+                    <!--<div class="col-md-6 col-sm-2 col-1">&nbsp;</div>-->
+                    <nav class="col-md-8 col-sm-10 col-12" id="MainNavigationFrame">
+                        <ul class="MainNavigation">
+                            <li><a href="{% url 'home' %}" {% if currentPage == "home" %}class="active"{%endif%}>Home</a></li>
+                            <li><a href="{% url 'project_list' %}" {% if currentPage == "project" %}class="active"{%endif%}>Projekte</a></li>
+                            <li><a href="{% url 'sensor_list' %}" {% if currentPage == "sensor" %}class="active"{%endif%} >Sensoren</a></li>
+                            <li><a href="{% url 'relaislist' %}" {% if currentPage == "relais" %}class="active"{%endif%} >Relais</a></li>
+                            <li><a href="{% url 'profil' %}" {% if currentPage == "profil" %}class="active"{%endif%} >Profil</a></li>
+                            <li><a href="{% url 'scheduledtasks' %}" {% if currentPage == "scheduledtasks" %}class="active"{%endif%} >Geplante Aufgaben</a></li>
+                            <li><a href="{% url 'eventlog' %}" {% if currentPage == "eventlog" %}class="active"{%endif%} >Eventlog</a></li>
+                        </ul>
+                        <div style="display:none;">
+                          {% include 'web/loginpartial.html' %}
+                        </div>
+                    </nav>
+                    <div class="MobileMenu">
+                        <span class="hamburgerLine"></span>
+                        <span class="hamburgerLine"></span>
+                        <span class="hamburgerLine"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        {% block content %}{% endblock %}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">&copy; Copyright 2019</div>
+                <!--<div class="col-6">Meta nav</div>-->
+            </div>
+        </div>
+    </footer>
+
+    <link href="{% static 'css/lib/bootstrap-grid.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/lib/chartist.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/lib/toastr.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/fonts.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/VDA_style.css' %}" rel="stylesheet" />
+
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/toastr.min.js' %}"></script>
+    <script src="{% static 'js/base_functions.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    
+    {% if currentPage == "home" %}
+    <script src="{% static 'js/libs/chartist.min.js' %}"></script>
+    <script src="{% static 'js/ChartController.js' %}"></script>
+    {%endif%}
+
+</body>
+</html>

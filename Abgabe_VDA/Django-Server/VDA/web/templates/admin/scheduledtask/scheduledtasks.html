@@ -1,0 +1,50 @@
+﻿{% extends "web/layout.html" %}
+
+{% block content %}
+{% load staticfiles%}
+    <main id="ScheduledTasks">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Geplante Aufgaben</h1>
+                </div>
+                <div class="col-12" id="ListEventLog">
+                    <div class="ResponsiveTable">
+                        <a href="{% url 'scheduledtasksedit' %}">Neuge Aufgabe erfassen</a>
+                        {% if tasklist %}
+                        <table class="striped">
+                            <tr>
+                                <th>Anzeigename</th>
+                                <th>Sensor</th>
+                                <th>Objekttyp</th>
+                                <th>Letzte Ausführung</th>
+                                <th>Nächste Ausführung</th>
+                                <th>Ausführungen</th>
+                                <th>Aktiviert</th>
+                                <th>Wird Ausgeführt</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        {% for task in tasklist %}
+                            <tr>
+                                <td>{{task.TaskNameDisplay}}</td>
+                                <td>{{task.ObjectID}}</td>
+                                <td>{{task.ObjectType}}</td>
+                                <td>{{task.LastRunTime}}</td>
+                                <td>{{task.NextRunTime}}</td>
+                                <td>{{task.Executions}}</td>
+                                <td>{{task.Enabled}}</td>
+                                <td>{{task.IsRunning}}</td>
+                                <td><a href="{% url 'scheduledtasksedit' %}?TaskID={{task.ScheduledTaskID}}"><i class="linearicons linearicons-pencil3" title="bearbeiten"></i></a> <a href="?task_id={{task.ScheduledTaskID}}" onclick="return confirm('Löschen ?')" class="delete" ><i class="linearicons linearicons-trash2" title="löschen"></i></a></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+
+                        {% else %}
+                  <p>Keine geplanten Aufgaben erfasst</p>
+                {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,45 @@
+﻿{% extends "web/layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>{{title}}</h1>
+            <p>Es darf nur ein Projekt auf einmal aktive sein. Wird ein neues Projekt aktiviert, dann wird das aktive projekt automatisch deaktiviert</p>
+            {{strFormMessage |safe }}
+            <form method="post">
+                {% csrf_token %}
+                <div class="formPanel" >
+                    <div class="fieldWrapper">
+                        {{ form.ProjectCodeName.errors }}
+                        {{ form.ProjectCodeName.label_tag }}
+                        {{ form.ProjectCodeName }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.ProjectDisplayName.errors }}
+                        {{ form.ProjectDisplayName.label_tag }}
+                        {{ form.ProjectDisplayName }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.StartDate.errors }}
+                        {{ form.StartDate.label_tag }}
+                        {{ form.StartDate }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.EndDate.errors }}
+                        {{ form.EndDate.label_tag }}
+                        {{ form.EndDate }}
+                    </div>
+                    <div class="fieldWrapper">
+                        {{ form.Enabled.errors }}
+                        {{ form.Enabled }}
+                        {{ form.Enabled.label_tag }}
+                    </div>
+                    <input type="submit" value="Speichern" class="primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

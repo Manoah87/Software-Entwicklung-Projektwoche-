@@ -1,0 +1,139 @@
+﻿@import "Variables";
+
+header {
+    .TopHeader {
+        display: block;
+
+        .container {
+            padding-top: 15px;
+        }
+    }
+
+    #Logo {
+        max-width: 300px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .FunctionNavigationFrame {
+        border-top: 1px solid #333;
+        border-bottom: 1px solid #333;
+    }
+
+    #FunctionNavigation {
+        list-style: none;
+        float: right;
+        display: flex;
+
+        li {
+            margin-right: 15px;
+        }
+    }
+
+    nav#MainNavigationFrame {
+        position: absolute;
+        right: 0;
+        left: 0;
+        background-color: @layoutColorOne;
+        z-index: 10;
+        height: 0;
+        overflow: hidden;
+        transition: height ease-in-out 0.5s;
+
+        &::before {
+            position: absolute;
+            background-color: #333;
+            bottom: -1px;
+            width: 100%;
+            height: 1px;
+            overflow: hidden;
+            z-index: 20;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            list-style: none;
+            padding-left: 0;
+
+            li {
+
+                a {
+                    font-weight: bold;
+                    font-size: 1.25rem;
+                    line-height: 1.5rem;
+                }
+            }
+        }
+    }
+
+    .MobileMenu {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        left: 15px;
+        top: -39px;
+        cursor: pointer;
+
+        .hamburgerLine {
+            height: 5px;
+            width: 30px;
+            background-color: #333;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            display: block;
+        }
+    }
+}
+
+footer{
+    line-height:4rem;
+    background-color:#333;
+    color:#FFF;
+}
+
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+    .testBox {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (min-width: 992px) {
+    header {
+        .FunctionNavigationFrame {
+            border-top: none;
+            border-bottom: none;
+        }
+
+        .MobileMenu {
+            display: none;
+        }
+
+        nav#MainNavigationFrame {
+            position: static;
+            height:auto;
+
+            &::before{
+                display:none;
+            }
+
+            ul {
+                flex-direction: row;
+                height: auto !important;
+
+                li{
+                    width:auto;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+}

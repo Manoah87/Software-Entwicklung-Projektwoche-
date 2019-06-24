@@ -1,0 +1,60 @@
+{% extends "web/layout.html" %}
+
+{% block content %}
+{% load staticfiles%} 
+ <main id="Home">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {% if sensorlist %}
+                        <h2>Aktuelle Sensorwerte</h2>
+                    {% endif %}
+                </div>
+                {% for sensor in  sensorlist %}
+                <div class="col-md-4 col-12">
+                    <div class="currentValue">
+                        {{sensor.SensorDisplayName}}<br /> {{sensor.SensorCustomData}} {{sensor.SensorUnit}} 
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <h2>Video Iframe</h2>
+                </div>
+                <div class="col-md-6 col-12">
+                    <h2>Sensorwerte vom <span id="DiagrammDate"></span></h2>
+                </div>
+            </div>  
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="livestream">
+                        <iframe src="http://severinprobst.ddns.net:8081/" target="iframe_a" style="width:100%;height:410px"></iframe>
+                        <p>Login: Pi / Sevi12345</p>
+                    </div>
+                </div>
+                <!--div class="col-md-6 col-12">
+                    Widgetzone
+                </div-->
+                <div class="col-md-6 col-12">
+                    <div class="sensorgrafik">
+                        <div class="ct-chart ct-perfect-fourth"></div>
+                       <p class="linkSensor">Sensor Grafik (https://gionkunz.github.io/chartist-js/getting-started.html)</p> 
+                        <label for="ddlDiagramSensor">Angezeigter Sensor:</label> 
+                        <select class="SensorSelector" id="ddlDiagramSensor">
+                            <option>Bitte Sensor ausw&auml;hlen</option>
+                            {% for sensorProject in sensorProjectList %}
+                            <option value="{{sensorProject.Sensor.SensorID}}">{{sensorProject.Sensor.SensorDisplayName}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="col-12"><!--ein Leeres Feld--></div>
+            </div>
+        </div>
+    </main>
+
+
+{% endblock %}
