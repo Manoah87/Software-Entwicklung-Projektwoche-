@@ -6,6 +6,14 @@
              mc:Ignorable="d"
              x:Class="hfupilot.app.App">
     <Application.Resources>
-
+        <ResourceDictinary>
+            <Style x:Key="Titel" TargetType="Label">
+                <Setter Property="TextColor" Value="#FFFFFFFF" />
+            </Style>
+            <!--<Style x:Key="DefaultButton" x:DataType="Button">
+                <Setter Property="BackgroundColor" Value="#660000FF" />
+                <Setter Property="TextColor" Value="#FFFFFFFF" />
+            </Style>-->
+        </ResourceDictinary>
     </Application.Resources>
 </Application>
