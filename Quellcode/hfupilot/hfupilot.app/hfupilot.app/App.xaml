@@ -7,7 +7,7 @@
              x:Class="hfupilot.app.App">
     <Application.Resources>
         <ResourceDictinary>
-            <Style x:Key="Titel" x:DataType="{x:Type Label}">
+            <Style x:Key="Titel" TargetType="Label">
                 <Setter Property="TextColor" Value="#FFFFFFFF" />
             </Style>
             <!--<Style x:Key="DefaultButton" x:DataType="Button">
