@@ -8,7 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <Style x:Key="Titel" TargetType="Label">
-                <Setter Property="TextColor" Value="#FFFFFFFF" />
+                <Setter Property="TextColor" Value="#FFFF0000" />
             </Style>
             <Style x:Key="DefaultButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="#660000FF" />

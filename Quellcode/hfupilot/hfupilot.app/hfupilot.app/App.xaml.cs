@@ -23,8 +23,6 @@ namespace hfupilot.app
                 Services.RegisterInstance(navigationPage.Navigation);
 
                 Services.Register<IViewMapper, ViewMapper>(Lifestyle.Singleton);
-                Services.Register<AutoMapper>(Lifestyle.Singleton);
-                Services.Register<AutoMapper>(Lifestyle.Singleton);
 
                 // Setup the initial binding context
                 mainPage.BindingContext = Services.GetInstance<AnmeldenViewModel>();
