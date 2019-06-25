@@ -10,7 +10,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Frame Grid.Row="0" BorderColor="GreenYellow"/>
-            <Frame Grid.Row="1" BorderColor="Red" Content="Combobox Auswahl"/>
+            <Frame Grid.Row="1" BorderColor="Red"/>
             <Frame Grid.Row="2" BorderColor="Violet"/>
         </Grid>
     </ContentPage.Content>

@@ -37,16 +37,30 @@ namespace hfupilot.app.CustomFramework.mvvm
             _method.Invoke(parameter);
         }
 
-        public event EventHandler CanExecuteChanged
+        //public event EventHandler CanExecuteChanged
+        //{
+        //    // https://joshsmithonwpf.wordpress.com/2008/06/17/allowing-commandmanager-to-query-your-icommand-objects/
+        //    // http://stackoverflow.com/questions/6634777/what-is-the-actual-task-of-canexecutechanged-and-commandmanager-requerysuggested
+
+        //    add
+        //    {
+        //        CommandManager.RequerySuggested += value;
+        //    }
+        //    remove { _weakEventManager.RemoveEventHandler(value); }
+        //}
+
+        /// <summary>
+        /// Occurs when changes occur that affect whether the command should execute.
+        /// </summary>
+        public event EventHandler CanExecuteChanged;
+
+        /// <summary>
+        /// Raises the can execute changed.
+        /// </summary>
+        public void RaiseCanExecuteChanged()
         {
-            // https://joshsmithonwpf.wordpress.com/2008/06/17/allowing-commandmanager-to-query-your-icommand-objects/
-            // http://stackoverflow.com/questions/6634777/what-is-the-actual-task-of-canexecutechanged-and-commandmanager-requerysuggested
 
-            //add { CommandManager.RequerySuggested += value; }
-            //remove { CommandManager.RequerySuggested -= value; }
-
-            add { _weakEventManager.AddEventHandler(value); }
-            remove { _weakEventManager.RemoveEventHandler(value); }
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }

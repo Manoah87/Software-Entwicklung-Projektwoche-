@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Xamarin.Forms;
 
 namespace hfupilot.app.Services
 {
-    interface IViewMapper
+    public interface IViewMapper
     {
+        Page Map<TViewModel>(TViewModel viewModel) where TViewModel : class;
     }
 }

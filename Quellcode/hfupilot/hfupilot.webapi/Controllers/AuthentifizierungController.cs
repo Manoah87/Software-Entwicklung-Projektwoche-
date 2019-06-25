@@ -41,23 +41,22 @@ namespace hfupilot.webapi.Controllers
         [Route("anmelden")]
         public string Anmelden(string benutzer, string passwort)
         {
-            using (HfupilotContext db = new HfupilotContext())
-            {
-                var user = new SqlParameter("i_Benutzer", "hf.mpfister3");
-                var password = new SqlParameter("i_Passwort", "8630!hfu_14");
-                SqlConnection conn = new SqlConnection("Server=sql.aplix.ch,14444;Database=iWorld_HFU_AddOn;Trusted_Connection=False;User ID=iWorld_HFU_pda;Password=apl!xPDAHaEfU;");
-                SqlCommand cmd = new SqlCommand("EXECUTE dbo.pda_Anmelden @i_Benutzer, @i_Passwort", conn);
-                cmd.Parameters.Add(user);
-                cmd.Parameters.Add(password);
+ 
+            var user = new SqlParameter("i_Benutzer", "hf.mpfister3");
+            var password = new SqlParameter("i_Passwort", "8630!hfu_14");
+            SqlConnection conn = new SqlConnection("Server=sql.aplix.ch,14444;Database=iWorld_HFU_AddOn;Trusted_Connection=False;User ID=iWorld_HFU_pda;Password=apl!xPDAHaEfU;");
+            SqlCommand cmd = new SqlCommand("EXECUTE dbo.pda_Anmelden @i_Benutzer, @i_Passwort", conn);
+            cmd.Parameters.Add(user);
+            cmd.Parameters.Add(password);
 
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                conn.Open();
-                da.Fill(ds);
-                conn.Close();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            conn.Open();
+            da.Fill(ds);
+            conn.Close();
 
-                //var test = db.AnmeldungRueckmeldungen.FromSql("EXECUTE dbo.pda_Anmelden @i_Benutzer, @i_Passwort", user, password).ToList().First(); ;
-            }
+            //var test = db.AnmeldungRueckmeldungen.FromSql("EXECUTE dbo.pda_Anmelden @i_Benutzer, @i_Passwort", user, password).ToList().First(); ;
+            
             return "gugus";
         }
 
