@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Michael\HFU\Projektwoche-2019\Quellcode\hfupilot\hfupilot.getsp\hfucontext.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\reto8\OneDrive\Desktop\NDS\Pr-Woche\Quellcode\hfupilot\hfupilot.getsp\hfucontext.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
