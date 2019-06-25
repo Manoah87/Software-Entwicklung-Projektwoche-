@@ -1,16 +1,38 @@
-﻿using System;
+﻿using hfupilot.app.CustomFramework.mvvm;
+using hfupilot.app.Services;
+using hfupilot.app.ViewModels;
+using hfupilot.app.Views;
+using SimpleInjector;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace hfupilot.app
 {
     public partial class App : Application
     {
+        public static Container Services { get; } = new Container();
+        
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            if (!DesignMode.IsDesignModeEnabled)
+            {
+                var mainPage = new AnmeldenView();
+                var navigationPage = new NavigationPage(mainPage);
+
+                Services.RegisterInstance(navigationPage.Navigation);
+
+                Services.Register<IViewMapper, ViewMapper>(Lifestyle.Singleton);
+                Services.Register<AutoMapper>(Lifestyle.Singleton);
+                Services.Register<AutoMapper>(Lifestyle.Singleton);
+
+                // Setup the initial binding context
+                mainPage.BindingContext = Services.GetInstance<AnmeldenViewModel>();
+
+                // Assign the main page
+
+                MainPage = navigationPage;
+            }
         }
 
         protected override void OnStart()
