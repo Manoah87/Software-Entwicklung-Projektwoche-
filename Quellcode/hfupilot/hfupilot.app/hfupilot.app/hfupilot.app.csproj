@@ -25,6 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\hfupilot.models\hfupilot.models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Views\AbwesenheitView.xaml.cs">
       <DependentUpon>AbwesenheitView.xaml</DependentUpon>
     </Compile>

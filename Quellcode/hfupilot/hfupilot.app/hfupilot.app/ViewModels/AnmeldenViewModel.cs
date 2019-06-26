@@ -5,6 +5,10 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Newtonsoft.Json;
 using System.Text;
+using System.Diagnostics;
+using hfupilot.app.models.api;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 namespace hfupilot.app.ViewModels
 {
@@ -51,11 +55,36 @@ namespace hfupilot.app.ViewModels
             LoginCommand = new RelayCommand(LoginHandler, CanExecute);
         }
 
-        public async void LoginHandler(object obj)
+        public void LoginHandler(object obj)
         {
             var login = new { benutzer = this.benutzer, passwort = this.passwort };
-            var content = new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json");
-            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsync("http://127.0.0.1:55939/api/Authentifizierung/anmelden", content);
+            BenutzerLogin benutzerLogin = new BenutzerLogin() { Benutzer = benutzer, Passwort = passwort };
+
+            var content = new StringContent(JsonConvert.SerializeObject(benutzerLogin), Encoding.UTF8, "application/json");
+            //content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            //_httpClient.DefaultRequestHeaders
+            //.Accept
+            //.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            // error _httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("hfupilot"));
+
+
+            //var httpResponseMessage =  _httpClient.PostAsync("/api/Authentifizierung/anmelden", content);
+            //httpResponseMessage.Wait();
+
+            Task<HttpResponseMessage> task = _httpClient.PostAsync("/api/Authentifizierung/anmelden", content);
+            task.Wait();
+
+            Task<string> res = task.Result.Content.ReadAsStringAsync();
+            res.Wait();
+
+            var result = _httpClient.GetAsync("/api/Authentifizierung");
+            result.Wait();
+
+            Debug.WriteLine("*==============>>>>>> Test <<<<<<<=============*");
+            Debug.WriteLine("Content: " + task.Result.Content);
+            Debug.WriteLine("StatusCode: " + task.Result.StatusCode);
+
         }
 
         public bool CanExecute(object obj)

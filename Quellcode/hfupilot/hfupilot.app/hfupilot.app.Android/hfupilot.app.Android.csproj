@@ -36,6 +36,7 @@
     <BundleAssemblies>false</BundleAssemblies>
     <LangVersion>7.2</LangVersion>
     <AndroidDexTool>dx</AndroidDexTool>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -113,6 +114,9 @@
       <Project>{2EF67CF1-B6FD-4E04-BCD5-35FB510CF61B}</Project>
       <Name>hfupilot.app</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\xml\network_security_config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

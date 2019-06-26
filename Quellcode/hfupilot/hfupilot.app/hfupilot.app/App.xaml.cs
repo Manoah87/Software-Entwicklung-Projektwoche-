@@ -6,6 +6,8 @@ using SimpleInjector;
 using System.Net.Http;
 using Xamarin.Forms;
 using Newtonsoft.Json;
+using System;
+using System.Net.Http.Headers;
 
 namespace hfupilot.app
 {
@@ -22,7 +24,14 @@ namespace hfupilot.app
             {
                 var mainPage = new AnmeldenView();
                 var navigationPage = new NavigationPage(mainPage);
-                HttpClient httpClient = new HttpClient();
+                HttpClient httpClient = new HttpClient((new HttpClientHandler()))
+                {
+                    BaseAddress = new Uri("http://10.0.2.2:55939")
+                };
+
+                //httpClient.DefaultRequestHeaders.Accept.Clear();
+                //httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    //httpClient.DefaultRequestHeaders
 
                 Services.RegisterInstance(navigationPage.Navigation);
                 Services.Register<IViewMapper, ViewMapper>(Lifestyle.Singleton);
