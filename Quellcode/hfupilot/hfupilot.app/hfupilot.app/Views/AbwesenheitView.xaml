@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="hfupilot.app.Views.AbwesenheitView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Abwesenheit!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Picker Title="Kurs auswählen">
+                <Picker.Items>
+                    <x:String>APP Entwicklung</x:String>
+                    <x:String>Softwareengineering</x:String>
+                    <x:String>C#</x:String>
+                </Picker.Items>
+            </Picker>
+
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        Text="zurück"/>
+                <Button Grid.Column="1"
+                        Text="speichern"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

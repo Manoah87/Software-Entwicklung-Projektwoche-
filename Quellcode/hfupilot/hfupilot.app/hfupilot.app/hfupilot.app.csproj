@@ -25,7 +25,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\AbmeldungView.xaml">
+    <Compile Update="Views\AbwesenheitView.xaml.cs">
+      <DependentUpon>AbwesenheitView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\AbwesenheitView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AnmeldenView.xaml">

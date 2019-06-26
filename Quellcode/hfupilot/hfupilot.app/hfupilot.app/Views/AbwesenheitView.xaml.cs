@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace hfupilot.app.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AbmeldungView : ContentPage
+	public partial class AbwesenheitView : ContentPage
 	{
-		public AbmeldungView ()
+		public AbwesenheitView ()
 		{
 			InitializeComponent ();
 		}

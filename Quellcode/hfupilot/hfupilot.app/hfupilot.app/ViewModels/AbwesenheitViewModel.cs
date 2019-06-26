@@ -4,7 +4,7 @@ using System.Text;
 
 namespace hfupilot.app.ViewModels
 {
-    class AbmeldungViewModel
+    class AbwesenheitViewModel
     {
     }
 }
