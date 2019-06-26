@@ -3,7 +3,9 @@ using hfupilot.app.Services;
 using hfupilot.app.ViewModels;
 using hfupilot.app.Views;
 using SimpleInjector;
+using System.Net.Http;
 using Xamarin.Forms;
+using Newtonsoft.Json;
 
 namespace hfupilot.app
 {
@@ -15,20 +17,21 @@ namespace hfupilot.app
         {
             InitializeComponent();
 
+            //TODO prüfen ob abgeschlossen (sealed)
             if (!DesignMode.IsDesignModeEnabled)
             {
                 var mainPage = new AnmeldenView();
                 var navigationPage = new NavigationPage(mainPage);
+                HttpClient httpClient = new HttpClient();
 
                 Services.RegisterInstance(navigationPage.Navigation);
-
                 Services.Register<IViewMapper, ViewMapper>(Lifestyle.Singleton);
+                Services.RegisterInstance(httpClient);
 
                 // Setup the initial binding context
                 mainPage.BindingContext = Services.GetInstance<AnmeldenViewModel>();
 
                 // Assign the main page
-
                 MainPage = navigationPage;
             }
         }

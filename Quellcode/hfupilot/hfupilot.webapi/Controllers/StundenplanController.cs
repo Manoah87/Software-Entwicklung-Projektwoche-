@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using hfupilot.models.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -16,11 +15,6 @@ namespace hfupilot.webapi.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            using (iWorld_HFU_AddOnContext db = new iWorld_HFU_AddOnContext())
-            {
-                // db.
-            }
-
             return new string[] { "value1", "value2" };
         }
 
