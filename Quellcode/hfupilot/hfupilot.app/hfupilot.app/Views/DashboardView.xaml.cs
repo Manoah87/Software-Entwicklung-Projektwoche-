@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace hfupilot.app.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Dashboard : ContentPage
+    public partial class DashboardView : TabbedPage
     {
-        public Dashboard()
+        public DashboardView()
         {
             InitializeComponent();
         }

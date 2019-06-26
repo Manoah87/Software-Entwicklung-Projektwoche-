@@ -4,24 +4,26 @@
              x:Class="hfupilot.app.Views.DashboardTermine">
     <ContentPage.Content>
         <Grid>
+
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Entry Grid.Row="0" VerticalOptions="Center" Placeholder="Präparation" Text="{Binding Title}" />
-            <DatePicker Grid.Row="1" VerticalOptions="Center" Date="{Binding DueDate}" />
+            <Entry Grid.Row="1" VerticalOptions="Center" Placeholder="Präparation" Text="{Binding Title}" />
             <Editor Grid.Row="2" VerticalOptions="FillAndExpand" Placeholder="Your description here" Text="{Binding Description}" />
             <Button Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="End" Command="{Binding SaveCommand}"
                     Text="Save" />
         </Grid>
+
+
     </ContentPage.Content>
 </ContentPage>
