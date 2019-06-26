@@ -55,7 +55,7 @@ namespace hfupilot.app.ViewModels
         {
             var login = new { benutzer = this.benutzer, passwort = this.passwort };
             var content = new StringContent(JsonConvert.SerializeObject(login), Encoding.UTF8, "application/json");
-            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsync("http://localhost:55939/api/Authentifizierung/anmelden", content);
+            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsync("http://127.0.0.1:55939/api/Authentifizierung/anmelden", content);
         }
 
         public bool CanExecute(object obj)
