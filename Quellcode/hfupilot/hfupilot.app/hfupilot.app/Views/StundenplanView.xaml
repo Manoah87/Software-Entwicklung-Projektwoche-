@@ -5,13 +5,31 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Frame Grid.Row="0" BorderColor="GreenYellow"/>
-            <Frame Grid.Row="1" BorderColor="Red"/>
-            <Frame Grid.Row="2" BorderColor="Violet"/>
+            <Entry Grid.Row="0" VerticalOptions="Center" Text="Stundenplan"/>
+            <Picker x:Name="AuswahlZeitraum" Grid.Row="1" SelectedIndex="0" HorizontalOptions="Center">
+                <Picker.Items>
+                    <x:String>heute</x:String>
+                    <x:String>diese Woche</x:String>
+                    <x:String>nächste Woche</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <ListView Grid.Row="2" FlowDirection="LeftToRight" ItemsSource="{Binding}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Spacing="10">
+                                <Label Text="Item1"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>              
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
