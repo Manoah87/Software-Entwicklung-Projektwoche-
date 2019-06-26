@@ -17,19 +17,19 @@
                     <x:String>nächste Woche</x:String>
                 </Picker.Items>
             </Picker>
-
-            <ListView Grid.Row="2" FlowDirection="LeftToRight" ItemsSource="{Binding}">
+            <!--<ListView Grid.Row="2" FlowDirection="LeftToRight" ItemsSource="{Binding}">-->
+            <ListView Grid.Row="2" FlowDirection="LeftToRight">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Spacing="10">
+                                <!--<Label Text="{Binding}"/>-->
                                 <Label Text="Item1"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>              
-
         </Grid>
     </ContentPage.Content>
 </ContentPage>
