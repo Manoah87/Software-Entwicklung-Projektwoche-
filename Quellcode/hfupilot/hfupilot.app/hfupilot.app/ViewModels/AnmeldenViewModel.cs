@@ -5,9 +5,9 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Newtonsoft.Json;
 using System.Text;
-using hfupilot.app.models.api;
+using hfupilot.Models;
+using hfupilot.Models.api;
 using System.Threading.Tasks;
-using hfupilot.app.Models;
 using hfupilot.app.Helper;
 
 namespace hfupilot.app.ViewModels
