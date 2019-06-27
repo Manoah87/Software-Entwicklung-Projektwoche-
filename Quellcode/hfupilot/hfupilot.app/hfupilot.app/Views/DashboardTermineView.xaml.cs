@@ -10,12 +10,13 @@ using Xamarin.Forms.Xaml;
 
 namespace hfupilot.app.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class DashboardTermine : ContentPage
-	{
-		public DashboardTermine ()
-		{
-			InitializeComponent ();
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class DashboardTermine : ContentPage
+    {
+        public DashboardTermine()
+        {
+            InitializeComponent();
+        }
+
+    }
 }

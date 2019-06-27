@@ -1,33 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:hfupilot.app.ViewModels"
              x:Class="hfupilot.app.Views.DashboardTermine"
              Title="Termine"
              x:Name="Page">
+    <ContentPage.BindingContext>
+        <local:DashboardTermineViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Margin="0,0,20,20">
-            <Button></Button>
-            <ListView RowHeight="50" x:Name="ListViewTermine">
-                <!--<ListView.ItemTemplate>
+            <Button Text="Termin_1"></Button>
+            <Button Text="Termin_2"></Button>
+            <Button Text="Termin_3"></Button>
+            <Button Text="Termin_4"></Button>
+            <Button Text="Termin_5"></Button>
+            <Button Text="Termin_6"></Button>
+            <ListView ItemsSource="{Binding Termine}">
+                <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Margin="20,0">
-                                --><!--<Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" VerticalOptions="Center" TextColor="Black" Text="{Binding Ort}"/>
-                                <Label Grid.Column="1" VerticalOptions="Center" TextColor="Black" Text="{Binding Fazit}"/>--><!--
-
-                            </Grid>
+                            <StackLayout>
+                                <Label Text="{Binding Lehrperson}"/>
+                                <Button Text="Details"/>
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>-->
-                </ListView>
-                <Button Text="Löschen" WidthRequest="100" Margin="20,0,0,0" Command="{Binding DeleteItemCommmand}"
-                CommandParameter="{x:Reference Name=Page}" />
-                <Button Text="Hinzufügen" WidthRequest="100" Margin="20,0,0,0" Command="{Binding AddPraeparationCommand}" />
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
