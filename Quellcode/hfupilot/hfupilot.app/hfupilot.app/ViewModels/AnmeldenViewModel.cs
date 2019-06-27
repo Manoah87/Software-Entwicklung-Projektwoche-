@@ -21,6 +21,7 @@ namespace hfupilot.app.ViewModels
         private readonly UserContext _userContext;
         private string benutzer;
         private string passwort;
+        private NavigationViewModel navigation;
 
         public ICommand LoginCommand { get; set; }
         public string Benutzer
@@ -30,7 +31,7 @@ namespace hfupilot.app.ViewModels
             {
                 benutzer = value;
                 RaisePropertyChanged();
-               ((RelayCommand)LoginCommand)?.RaiseCanExecuteChanged();
+                ((RelayCommand)LoginCommand)?.RaiseCanExecuteChanged();
             }
         }
 
@@ -45,7 +46,20 @@ namespace hfupilot.app.ViewModels
             }
         }
 
-        public AnmeldenViewModel(INavigation navigation, IViewMapper viewMapper,UserContext userContext, HttpClient httpClient)
+        public NavigationViewModel Navigation
+        {
+            get => navigation;
+            set
+            {
+                navigation = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public AnmeldenViewModel(INavigation navigation,
+                                 IViewMapper viewMapper,
+                                 UserContext userContext,
+                                 HttpClient httpClient)
         {
             _navigation = navigation;
             _viewMapper = viewMapper;
@@ -54,19 +68,23 @@ namespace hfupilot.app.ViewModels
 
             Benutzer = "";
             Passwort = "";
+
+            Navigation = new NavigationViewModel(navigation, viewMapper, userContext, httpClient);
             LoginCommand = new RelayCommand(LoginHandler, CanExecute);
         }
 
         public void LoginHandler(object obj)
         {
-            var login = new { benutzer = this.benutzer, passwort = this.passwort };
+            //Login Aufbereitet
             BenutzerLogin benutzerLogin = new BenutzerLogin() { Benutzer = benutzer, Passwort = passwort };
 
             var content = new StringContent(JsonConvert.SerializeObject(benutzerLogin), Encoding.UTF8, "application/json");
-          
+
+            //Request an Web-API senden.
             Task<HttpResponseMessage> Response = _httpClient.PostAsync("/api/Authentifizierung/anmelden", content);
             Response.Wait();
 
+            //Message auslessen
             Task<string> anmeldung = Response.Result.Content.ReadAsStringAsync();
             anmeldung.Wait();
 
@@ -79,7 +97,7 @@ namespace hfupilot.app.ViewModels
             }
             else
             {
-                ((Page)obj).DisplayAlert("Bestätigen", anmelden.FehlerMeldung , "OK");
+                ((Page)obj).DisplayAlert("Bestätigen", anmelden.FehlerMeldung, "OK");
             }
 
         }

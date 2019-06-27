@@ -14,7 +14,7 @@
                 <Setter Property="TextColor" Value="#FF0000FF" />
             </Style>
             <Style x:Key="DefaultButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#660000FF" />
+                <Setter Property="BackgroundColor" Value="#FF0000FF" />
                 <Setter Property="TextColor" Value="#FFFFFFFF" />
             </Style>
             <Style x:Key="DefaultPicker" TargetType="Picker">

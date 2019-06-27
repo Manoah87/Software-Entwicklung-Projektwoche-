@@ -19,6 +19,10 @@ namespace hfupilot.app.Services
                     result = new DashboardView();
                     result.BindingContext = dashboardViewModel;
                     break;
+                case StundenplanViewModel stundenplanViewModel:
+                    result = new StundenplanView();
+                    result.BindingContext = stundenplanViewModel;
+                    break;
             }
 
             return result;

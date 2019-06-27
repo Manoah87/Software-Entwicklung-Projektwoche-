@@ -1,4 +1,5 @@
-﻿using hfupilot.Models.api;
+﻿using hfupilot.Models;
+using hfupilot.Models.api;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -10,12 +11,13 @@ namespace hfupilot.webapi.Controllers
     public class StundenplanController : Controller
     {
         // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public IActionResult Get([FromHeader]StundenplanParameter value)
+        [HttpGet("/{sessionID}/{filter}")]
+        public IActionResult Get(int sessionID, int filter)
         {
             try
             {
-                return Ok("");
+                var resultat = new Stundenplan();
+                return Ok("test");
             }
             catch(Exception ex)
             {

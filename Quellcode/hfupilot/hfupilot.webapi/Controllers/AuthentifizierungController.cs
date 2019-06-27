@@ -1,10 +1,11 @@
-﻿using hfupilot.app.Models;
+﻿using hfupilot.Models;
 using System;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 using System.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
+using hfupilot.Models.api;
 
 namespace hfupilot.webapi.Controllers
 {

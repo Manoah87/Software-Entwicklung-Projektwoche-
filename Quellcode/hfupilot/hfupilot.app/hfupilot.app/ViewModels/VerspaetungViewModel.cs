@@ -2,14 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
-using System.Collections.ObjectModel;
 using hfupilot.app.Services;
 using System.Net.Http;
-using Newtonsoft.Json;
-using System.Text;
-using hfupilot.app.models.api;
-using System.Threading.Tasks;
-using hfupilot.app.Models;
 
 namespace hfupilot.app.ViewModels
 {
