@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <StackLayout Margin="0,0,20,20">
             <partial:Navigation BindingContext="{Binding Navigation}" />
-            <ListView ItemsSource="{Binding Meldungen}">
+            <ListView Margin="20,50" ItemsSource="{Binding Meldungen}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

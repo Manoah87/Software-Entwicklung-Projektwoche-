@@ -2,22 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:hfupilot.app.ViewModels"
+             xmlns:partial="clr-namespace:hfupilot.app.Views.partialview"
              x:Class="hfupilot.app.Views.DashboardTermine"
              Title="Termine"
              x:Name="Page">
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <local:DashboardTermineViewModel/>
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
     <ContentPage.Content>
         <StackLayout Margin="0,0,20,20">
+            <partial:Navigation BindingContext="{Binding Navigation}" />
             <ListView ItemsSource="{Binding Termine}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Grid Margin="20,5">
+                                <Grid Margin="20,50">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="*"/>

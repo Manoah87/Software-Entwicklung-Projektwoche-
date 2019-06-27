@@ -43,6 +43,7 @@ namespace hfupilot.app.ViewModels
             HttpClient httpClient)
         {
             DashboardMeldungenViewModel = new DashboardMeldungenViewModel(navigation,viewMapper,userContext,httpClient);
+            DashboardTermineViewModel = new DashboardTermineViewModel(navigation,viewMapper,userContext,httpClient);
 
         }
     }

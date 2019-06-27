@@ -4,5 +4,5 @@
              xmlns:TabbedDashB="clr-namespace:hfupilot.app.Views"
              x:Class="hfupilot.app.Views.DashboardView">
     <TabbedDashB:DashboardMeldungen BindingContext="{Binding DashboardMeldungenViewModel}"/>
-    <TabbedDashB:DashboardTermine/>
+    <TabbedDashB:DashboardTermine BindingContext="{Binding DashboardTermineViewModel}"/>
 </TabbedPage>
