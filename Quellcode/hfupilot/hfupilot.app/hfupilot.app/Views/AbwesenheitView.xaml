@@ -1,7 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="hfupilot.app.Views.AbwesenheitView">
+             x:Class="hfupilot.app.Views.AbwesenheitView"
+             x:Name="Page"
+             Title="Abwesenheit"
+             BackgroundImageSource="{local:EmbeddedImage ResourceId=hfupilot.app.Resource.footer.png}"
+             xmlns:local="clr-namespace:ProjectName.MarkupExtensions">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="{local:EmbeddedImage ResourceId=hfupilot.app.Resource.hfu_icon.jpg}" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -16,24 +24,29 @@
             </Grid.ColumnDefinitions>
 
             <StackLayout Grid.Row="1" Grid.Column="1">
-                <Label Text="Abwesenheit"
-                       Style="{StaticResource Titel}">
-                </Label>
 
-                <Editor Placeholder="Begründung zur Verspätung" 
+                <Editor Placeholder="Begründung" 
                         Text="{Binding Begruendung, Mode=TwoWay}"
                         VerticalOptions ="FillAndExpand"
                         Style="{StaticResource DefaultEditor}">
                 </Editor>
 
+                <Label Text="{Binding BegruendungLaenge}"
+                        HorizontalOptions ="End"
+                        Style="{StaticResource DefaultLabel}">
+                </Label>
+                
                 <Button VerticalOptions="EndAndExpand" 
                         Text="Speichern" 
-                        Command="{Binding SpeicherCommand, Mode=TwoWay}" 
+                        Command="{Binding SpeichernCommand, Mode=TwoWay}" 
                         CommandParameter="{x:Reference Name=Page}" 
                         Style="{StaticResource DefaultButton}">
                 </Button>
+
+                
             </StackLayout>
 
+            <Image Grid.Row="2" Grid.Column="1" Source="{local:EmbeddedImage ResourceId=hfupilot.app.Resource.bzu_hf_tiwf_ohne.png }"></Image>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
