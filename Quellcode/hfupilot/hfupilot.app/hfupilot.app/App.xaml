@@ -17,6 +17,14 @@
                 <Setter Property="BackgroundColor" Value="#660000FF" />
                 <Setter Property="TextColor" Value="#FFFFFFFF" />
             </Style>
+            <Style x:Key="DefaultPicker" TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="#660000FF" />
+                <Setter Property="TextColor" Value="#FFFFFFFF" />
+            </Style>
+            <Style x:Key="DefaultEditor" TargetType="Editor">
+                <Setter Property="BackgroundColor" Value="#660000FF" />
+                <Setter Property="TextColor" Value="#FFFFFFFF" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
