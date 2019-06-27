@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace hfupilot.app.models.api
+namespace hfupilot.Models.api
 {
     public class BenutzerLogin
     {

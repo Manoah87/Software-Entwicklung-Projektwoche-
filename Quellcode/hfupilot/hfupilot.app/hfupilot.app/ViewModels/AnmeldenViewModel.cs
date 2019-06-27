@@ -8,6 +8,7 @@ using System.Text;
 using hfupilot.app.models.api;
 using System.Threading.Tasks;
 using hfupilot.app.Models;
+using hfupilot.app.Helper;
 
 namespace hfupilot.app.ViewModels
 {
@@ -17,6 +18,7 @@ namespace hfupilot.app.ViewModels
         private readonly INavigation _navigation;
         private readonly IViewMapper _viewMapper;
         private readonly HttpClient _httpClient;
+        private readonly UserContext _userContext;
         private string benutzer;
         private string passwort;
 
@@ -43,11 +45,12 @@ namespace hfupilot.app.ViewModels
             }
         }
 
-        public AnmeldenViewModel(INavigation navigation, IViewMapper viewMapper, HttpClient httpClient)
+        public AnmeldenViewModel(INavigation navigation, IViewMapper viewMapper,UserContext userContext, HttpClient httpClient)
         {
             _navigation = navigation;
             _viewMapper = viewMapper;
             _httpClient = httpClient;
+            _userContext = userContext;
 
             Benutzer = "";
             Passwort = "";
@@ -70,6 +73,8 @@ namespace hfupilot.app.ViewModels
             Anmelden anmelden = JsonConvert.DeserializeObject<Anmelden>(anmeldung.Result);
             if (anmelden.Fehler == 0)
             {
+                _userContext.SessionID = anmelden.Session;
+                _userContext.Stufe = anmelden.Stufe;
                 _navigation.PushAsync(_viewMapper.Map(new DashboardViewModel()));
             }
             else

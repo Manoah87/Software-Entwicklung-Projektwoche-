@@ -1,20 +1,9 @@
 ﻿using hfupilot.app.Models;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
 using System.Data;
-using hfupilot.app.models.api;
 using Microsoft.AspNetCore.Authorization;
-using System.Web.Http;
-using System.Net.Http;
-using Microsoft.Extensions.Configuration.Json;
-using System.IO;
 using Microsoft.Extensions.Configuration;
 
 namespace hfupilot.webapi.Controllers

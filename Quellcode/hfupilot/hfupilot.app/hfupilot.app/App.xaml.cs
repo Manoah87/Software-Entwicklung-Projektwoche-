@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http.Headers;
+using hfupilot.app.Helper;
 
 namespace hfupilot.app
 {
@@ -24,6 +25,8 @@ namespace hfupilot.app
             {
                 var mainPage = new AnmeldenView();
                 var navigationPage = new NavigationPage(mainPage);
+                var userContext = new UserContext();
+
                 HttpClient httpClient = new HttpClient((new HttpClientHandler()))
                 {
                     BaseAddress = new Uri("http://10.0.2.2:55939")
@@ -32,6 +35,7 @@ namespace hfupilot.app
                 Services.RegisterInstance(navigationPage.Navigation);
                 Services.Register<IViewMapper, ViewMapper>(Lifestyle.Singleton);
                 Services.RegisterInstance(httpClient);
+                Services.RegisterInstance(userContext);
 
                 // Setup the initial binding context
                 mainPage.BindingContext = Services.GetInstance<AnmeldenViewModel>();
