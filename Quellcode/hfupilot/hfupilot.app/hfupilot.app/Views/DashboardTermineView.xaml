@@ -1,30 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="hfupilot.app.Views.DashboardTermine">
+             x:Class="hfupilot.app.Views.DashboardTermine"
+             Title="Termine"
+             x:Name="Page">
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="8*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <StackLayout Margin="0,0,20,20">
+            <Button></Button>
+            <ListView RowHeight="50" x:Name="ListViewTermine">
+                <!--<ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="20,0">
+                                --><!--<Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" VerticalOptions="Center" TextColor="Black" Text="{Binding Ort}"/>
+                                <Label Grid.Column="1" VerticalOptions="Center" TextColor="Black" Text="{Binding Fazit}"/>--><!--
 
-            <Label Grid.Row="1" Grid.Column="1"  VerticalOptions="Center"  Text="Meine Termine" />
-            <StackLayout Grid.Row="2" Grid.Column="1">
-                <Label Grid.Row="1" Grid.Column="1"  VerticalOptions="Center"  Text="Termin_1" />
-                <Label Grid.Row="1" Grid.Column="1"  VerticalOptions="Center"  Text="Termin_2" />
-<!--<ListView></ListView>-->
-
-            </StackLayout>
-
-
-            </Grid>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
+                </ListView>
+                <Button Text="Löschen" WidthRequest="100" Margin="20,0,0,0" Command="{Binding DeleteItemCommmand}"
+                CommandParameter="{x:Reference Name=Page}" />
+                <Button Text="Hinzufügen" WidthRequest="100" Margin="20,0,0,0" Command="{Binding AddPraeparationCommand}" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
