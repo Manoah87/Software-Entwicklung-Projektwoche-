@@ -7,30 +7,63 @@ using System.Net.Http;
 
 namespace hfupilot.app.ViewModels
 {
-    class VerspaetungViewModel : ObservableObject
+    public class VerspaetungViewModel : ObservableObject
     {
-        private List<int> _verspeatungsAuswahl;
+        private List<string> _verspeatungsAuswahlsliste;
         private string _begruendung;
+        private int _verspaetungAuswahl;
+
         private readonly INavigation _navigation;
         private readonly IViewMapper _viewMapper;
         private readonly HttpClient _httpClient;
+
         public ICommand SpeicherCommand { get; set; }
 
-        public VerspaetungViewModel()
+        public VerspaetungViewModel(INavigation navigation, IViewMapper viewMapper, HttpClient httpClient)
         {
-            _verspeatungsAuswahl = new List<int> { 1, 2, 3, 4, 5 };
+            _navigation = navigation;
+            _viewMapper = viewMapper;
+            _httpClient = httpClient;
+
+            _verspeatungsAuswahlsliste = new List<string>();
+            for (int i = 0; i < 5; i++)
+            {
+                _verspeatungsAuswahlsliste.Add($"{i*15} min");
+            }
+
+            SpeicherCommand = new RelayCommand(SpeichernHandler, CanExecuteSpeichern);
         }
 
-        public List<int> Verspeatungen
+        public void SpeichernHandler(object obj)
         {
-            get { return _verspeatungsAuswahl; }
+            ((Page)obj).DisplayAlert("Auswahl", $"index: {_verspaetungAuswahl} \n ausrede: {_begruendung}", "OK");
+
+        }
+
+        public bool CanExecuteSpeichern(object obj)
+        {
+            return _verspaetungAuswahl != 0 && _begruendung != "";
+        }
+
+        public List<string> Verspeatungen
+        {
+            get => _verspeatungsAuswahlsliste;
             set
             {
-                if (_verspeatungsAuswahl != value)
-                {
-                    _verspeatungsAuswahl = value;
-                    //OnPropertyChanged();
-                }
+                _verspeatungsAuswahlsliste = value;
+                RaisePropertyChanged();
+                ((RelayCommand)SpeicherCommand)?.RaiseCanExecuteChanged();
+            }
+        }
+
+        public int AusgewaelteVerspaetung
+        {
+            get => _verspaetungAuswahl;
+            set
+            {
+                _verspaetungAuswahl = value;
+                RaisePropertyChanged();
+                ((RelayCommand)SpeicherCommand)?.RaiseCanExecuteChanged();
             }
         }
 
