@@ -24,9 +24,9 @@
                 <Picker x:Name="AuswahlVerspaetung" 
                         Title="Treffen sie Ihre Auswahl" 
                         ItemsSource="{Binding Verspeatungen}"
+                        SelectedIndex="{Binding AusgewaelteVerspaetung}"
                         Style="{StaticResource DefaultPicker}">
                 </Picker>
-                <!--="{Binding Value}"/>-->
 
                 <Editor Placeholder="Begründung zur Verspätung" 
                         Text="{Binding Begruendung, Mode=TwoWay}"
@@ -36,10 +36,9 @@
 
                 <Button VerticalOptions="EndAndExpand" 
                         Text="Speichern" 
-                        Command="{Binding Speichern, Mode=TwoWay}" 
+                        Command="{Binding SpeicherCommand, Mode=TwoWay}" 
                         CommandParameter="{x:Reference Name=Page}" 
                         Style="{StaticResource DefaultButton}">
-                    
                 </Button>
             </StackLayout>
 
