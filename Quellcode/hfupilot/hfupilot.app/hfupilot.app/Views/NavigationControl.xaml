@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="hfupilot.app.Views.NavigationControl">
+
+      <StackLayout>
+          <Button Text="Stundenplan"/>
+          <Button Text="Meldung erfassen"/>
+          <Button Text="Meldungen anzeigen"/>
+      </StackLayout>
+
+</Grid>

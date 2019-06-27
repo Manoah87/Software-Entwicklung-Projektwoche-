@@ -22,7 +22,8 @@ namespace hfupilot.app
             //TODO prüfen ob abgeschlossen (sealed)
             if (!DesignMode.IsDesignModeEnabled)
             {
-                var mainPage = new AnmeldenView();
+                //var mainPage = new AnmeldenView();
+                var mainPage = new DashboardView();
                 var navigationPage = new NavigationPage(mainPage);
                 HttpClient httpClient = new HttpClient((new HttpClientHandler()))
                 {

@@ -1,6 +1,6 @@
 ﻿namespace hfupilot.app.Models
 {
-    class Meldung : BasisFehlerProperties
+    public class Meldung : BasisFehlerProperties
     {
         public int Id { get; set; }
         public string Datum { get; set; }
