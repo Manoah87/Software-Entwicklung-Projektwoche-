@@ -5,9 +5,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Newtonsoft.Json;
 using System.Text;
-using System.Diagnostics;
 using hfupilot.app.models.api;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using hfupilot.app.Models;
 
@@ -69,14 +67,14 @@ namespace hfupilot.app.ViewModels
             Task<string> anmeldung = Response.Result.Content.ReadAsStringAsync();
             anmeldung.Wait();
 
-            Anmelden anmelden = (Anmelden)JsonConvert.DeserializeObject(anmeldung.Result);
+            Anmelden anmelden = JsonConvert.DeserializeObject<Anmelden>(anmeldung.Result);
             if (anmelden.Fehler == 0)
             {
-                _navigation.PushAsync();
+                _navigation.PushAsync(_viewMapper.Map(new DashboardViewModel()));
             }
             else
             {
-                //show Message
+                ((Page)obj).DisplayAlert("Bestätigen", anmelden.FehlerMeldung , "OK");
             }
 
         }

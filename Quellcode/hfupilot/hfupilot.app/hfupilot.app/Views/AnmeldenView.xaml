@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="hfupilot.app.Views.AnmeldenView">
+             x:Class="hfupilot.app.Views.AnmeldenView"
+             x:Name="Page">
     <ContentPage.Content>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -30,7 +31,9 @@
                 <Entry x:Name="TxtPassowrt" 
                        IsPassword="True"  
                        Text="{Binding Passwort}" />
-                <Button Text="Login" Command="{Binding LoginCommand, Mode=TwoWay}" 
+                <Button Text="Login" 
+                        Command="{Binding LoginCommand, Mode=TwoWay}" 
+                        CommandParameter="{x:Reference Name=Page}"
                         Style="{StaticResource DefaultButton}"/>
             </StackLayout>
         </Grid>

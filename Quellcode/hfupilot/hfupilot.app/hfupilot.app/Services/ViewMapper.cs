@@ -15,6 +15,10 @@ namespace hfupilot.app.Services
                     result = new AnmeldenView();
                     result.BindingContext = mainViewModel;
                     break;
+                case DashboardViewModel dashboardViewModel:
+                    result = new DashboardView();
+                    result.BindingContext = dashboardViewModel;
+                    break;
             }
 
             return result;
