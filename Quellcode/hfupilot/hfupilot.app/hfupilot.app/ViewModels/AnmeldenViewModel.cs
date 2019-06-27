@@ -9,6 +9,7 @@ using System.Diagnostics;
 using hfupilot.app.models.api;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using hfupilot.app.Models;
 
 namespace hfupilot.app.ViewModels
 {
@@ -61,29 +62,22 @@ namespace hfupilot.app.ViewModels
             BenutzerLogin benutzerLogin = new BenutzerLogin() { Benutzer = benutzer, Passwort = passwort };
 
             var content = new StringContent(JsonConvert.SerializeObject(benutzerLogin), Encoding.UTF8, "application/json");
-            //content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-            //_httpClient.DefaultRequestHeaders
-            //.Accept
-            //.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+          
+            Task<HttpResponseMessage> Response = _httpClient.PostAsync("/api/Authentifizierung/anmelden", content);
+            Response.Wait();
 
-            // error _httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("hfupilot"));
+            Task<string> anmeldung = Response.Result.Content.ReadAsStringAsync();
+            anmeldung.Wait();
 
-
-            //var httpResponseMessage =  _httpClient.PostAsync("/api/Authentifizierung/anmelden", content);
-            //httpResponseMessage.Wait();
-
-            Task<HttpResponseMessage> task = _httpClient.PostAsync("/api/Authentifizierung/anmelden", content);
-            task.Wait();
-
-            Task<string> res = task.Result.Content.ReadAsStringAsync();
-            res.Wait();
-
-            var result = _httpClient.GetAsync("/api/Authentifizierung");
-            result.Wait();
-
-            Debug.WriteLine("*==============>>>>>> Test <<<<<<<=============*");
-            Debug.WriteLine("Content: " + task.Result.Content);
-            Debug.WriteLine("StatusCode: " + task.Result.StatusCode);
+            Anmelden anmelden = (Anmelden)JsonConvert.DeserializeObject(anmeldung.Result);
+            if (anmelden.Fehler == 0)
+            {
+                _navigation.PushAsync();
+            }
+            else
+            {
+                //show Message
+            }
 
         }
 

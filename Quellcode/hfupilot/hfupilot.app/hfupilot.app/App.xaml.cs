@@ -29,10 +29,6 @@ namespace hfupilot.app
                     BaseAddress = new Uri("http://10.0.2.2:55939")
                 };
 
-                //httpClient.DefaultRequestHeaders.Accept.Clear();
-                //httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    //httpClient.DefaultRequestHeaders
-
                 Services.RegisterInstance(navigationPage.Navigation);
                 Services.Register<IViewMapper, ViewMapper>(Lifestyle.Singleton);
                 Services.RegisterInstance(httpClient);

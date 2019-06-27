@@ -13,6 +13,9 @@ using hfupilot.app.models.api;
 using Microsoft.AspNetCore.Authorization;
 using System.Web.Http;
 using System.Net.Http;
+using Microsoft.Extensions.Configuration.Json;
+using System.IO;
+using Microsoft.Extensions.Configuration;
 
 namespace hfupilot.webapi.Controllers
 {
@@ -20,28 +23,14 @@ namespace hfupilot.webapi.Controllers
     [ApiController]
     public class AuthentifizierungController : ControllerBase
     {
-        // GET: api/Authentifizierung
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private IConfiguration _configuration;
+
+
+        public AuthentifizierungController(IConfiguration configuration)
         {
-            return new string[] { "value1xxxx", "value2blub" };
+            _configuration = configuration;
         }
 
-        // GET: api/Authentifizierung/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Authentifizierung
-        [HttpPost]
-        public string Post([FromBody] string value)
-        {
-            return value;
-        }
-
-        //public string Anmelden(string benutzer, string passwort)
         [HttpPost]
         [AllowAnonymous]
         [Route("anmelden")]
@@ -49,43 +38,43 @@ namespace hfupilot.webapi.Controllers
         public IActionResult Anmeldung([FromBody]BenutzerLogin value)
         {
 
-            return Ok(new Anmelden() { FehlerMeldung = "gugus" }); // new Anmelden() { FehlerMeldung = "gugus" };
-            //try
-            //{
-            //    var user = new SqlParameter("i_Benutzer", "hf.mpfister3");
-            //    var password = new SqlParameter("i_Passwort", "8630!hfu_14");
-            //    SqlConnection conn = new SqlConnection("");
-            //    SqlCommand cmd = new SqlCommand("EXECUTE dbo.pda_Anmelden @i_Benutzer, @i_Passwort", conn);
-            //    cmd.Parameters.Add(user);
-            //    cmd.Parameters.Add(password);
+            try
+            {
+                var user = new SqlParameter("i_Benutzer", value.Benutzer);
+                var password = new SqlParameter("i_Passwort", value.Passwort);
+                SqlConnection conn = new SqlConnection(_configuration["ConnectionString"]);
+                SqlCommand cmd = new SqlCommand("EXECUTE dbo.pda_Anmelden @i_Benutzer, @i_Passwort", conn);
+                cmd.Parameters.Add(user);
+                cmd.Parameters.Add(password);
 
-            //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-            //    DataSet ds = new DataSet();
-            //    conn.Open();
-            //    da.Fill(ds);
-            //    conn.Close();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                conn.Open();
+                da.Fill(ds);
+                conn.Close();
+                Anmelden result;
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    DataRow row = ds.Tables[0].Rows[0];
+                    result = new Anmelden()
+                    {
+                        Fehler = (int)row["Fehler"],
+                        FehlerMeldung = row["Fehlermeldung"].ToString(),
+                        Session = (int)row["SessionID"],
+                        Stufe = (int)row["Stufe"]
+                    };
+                }
+                else
+                {
+                    result = new Anmelden();
+                }
 
-            //    //var test = db.AnmeldungRueckmeldungen.FromSql("EXECUTE dbo.pda_Anmelden @i_Benutzer, @i_Passwort", user, password).ToList().First(); ;
-            //    return Request.CreateResponse()
-            //    //return new Anmelden()
-            //    //{
-            //    //    Fehler = 0,
-            //    //    FehlerMeldung = "",
-            //    //    Session = 11,
-            //    //    Stufe = 32,
-            //    //};
-            //}
-            //catch (Exception ex)
-            //{
-            //    //return "";
-            //    //return new Anmelden()
-            //    //{
-            //    //    Fehler = 1,
-            //    //    FehlerMeldung = ex.ToString(),
-            //    //    Session = 0,
-            //    //    Stufe = 0,
-            //    //};
-            //}
+                return Ok(result); 
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
 
         }
 
