@@ -1,5 +1,5 @@
 ﻿using hfupilot.app.CustomFramework.mvvm;
-using hfupilot.app.Models;
+using hfupilot.Models;
 
 
 namespace hfupilot.app.ViewModels

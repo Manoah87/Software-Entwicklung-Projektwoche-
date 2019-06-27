@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="hfupilot.app.Views.VerspaetungView"
+             x:Name="Page">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="8*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Row="1" Grid.Column="1">
+                <Label Text="Verspätung" 
+                       Style="{StaticResource Titel}">
+                </Label>
+
+                <Picker x:Name="AuswahlVerspaetung" 
+                        Title="Treffen sie Ihre Auswahl" 
+                        ItemsSource="{Binding Verspeatungen}"
+                        Style="{StaticResource DefaultPicker}">
+                </Picker>
+                <!--="{Binding Value}"/>-->
+
+                <Editor Placeholder="Begründung zur Verspätung" 
+                        Text="{Binding Begruendung, Mode=TwoWay}"
+                        VerticalOptions ="FillAndExpand"
+                        Style="{StaticResource DefaultEditor}">
+                </Editor>
+
+                <Button VerticalOptions="EndAndExpand" 
+                        Text="Speichern" 
+                        Command="{Binding Speichern, Mode=TwoWay}" 
+                        CommandParameter="{x:Reference Name=Page}" 
+                        Style="{StaticResource DefaultButton}">
+                    
+                </Button>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

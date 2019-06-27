@@ -1,4 +1,4 @@
-﻿namespace hfupilot.app.Models
+﻿namespace hfupilot.Models
 {
     public class Termine : BasisFehlerProperties
     {

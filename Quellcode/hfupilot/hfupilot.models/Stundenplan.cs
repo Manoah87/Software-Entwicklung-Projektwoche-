@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace hfupilot.app.Models
+namespace hfupilot.Models
 {
-    class Stundenplan
+    public class Stundenplan
     {
         public List<Termine> StundenplanList { get; set; }
     }
