@@ -1,30 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="hfupilot.app.Views.DashboardTermine">
+             xmlns:local="clr-namespace:hfupilot.app.ViewModels"
+             x:Class="hfupilot.app.Views.DashboardTermine"
+             Title="Termine"
+             x:Name="Page">
+    <ContentPage.BindingContext>
+        <local:DashboardTermineViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="8*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Label Grid.Row="1" Grid.Column="1"  VerticalOptions="Center"  Text="Meine Termine" />
-            <StackLayout Grid.Row="2" Grid.Column="1">
-                <Label Grid.Row="1" Grid.Column="1"  VerticalOptions="Center"  Text="Termin_1" />
-                <Label Grid.Row="1" Grid.Column="1"  VerticalOptions="Center"  Text="Termin_2" />
-<!--<ListView></ListView>-->
-
-            </StackLayout>
-
-
-            </Grid>
+        <StackLayout Margin="0,0,20,20">
+            <Button Text="Termin_1"></Button>
+            <Button Text="Termin_2"></Button>
+            <Button Text="Termin_3"></Button>
+            <Button Text="Termin_4"></Button>
+            <Button Text="Termin_5"></Button>
+            <Button Text="Termin_6"></Button>
+            <ListView ItemsSource="{Binding Termine}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Lehrperson}"/>
+                                <Button Text="Details"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

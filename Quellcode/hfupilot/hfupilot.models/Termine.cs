@@ -1,6 +1,6 @@
 ﻿namespace hfupilot.app.Models
 {
-    class Termine : BasisFehlerProperties
+    public class Termine : BasisFehlerProperties
     {
         public int Id { get; set; }
         public string Datum { get; set; }
