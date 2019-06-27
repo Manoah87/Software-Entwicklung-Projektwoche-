@@ -39,8 +39,8 @@ namespace hfupilot.app
                 Services.RegisterInstance(userContext);
 
                 // Setup the initial binding context
-                mainPage.BindingContext = Services.GetInstance<AnmeldenViewModel>();
-
+                // mainPage.BindingContext = Services.GetInstance<AnmeldenViewModel>();
+                mainPage.BindingContext = Services.GetInstance<DashboardViewModel>();
                 // Assign the main page
                 MainPage = navigationPage;
             }

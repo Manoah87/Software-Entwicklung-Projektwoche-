@@ -21,7 +21,7 @@ namespace hfupilot.app.ViewModels
         private readonly UserContext _userContext;
         private string benutzer;
         private string passwort;
-        private NavigationViewModel navigation;
+       
 
         public ICommand LoginCommand { get; set; }
         public string Benutzer
@@ -46,15 +46,7 @@ namespace hfupilot.app.ViewModels
             }
         }
 
-        public NavigationViewModel Navigation
-        {
-            get => navigation;
-            set
-            {
-                navigation = value;
-                RaisePropertyChanged();
-            }
-        }
+
 
         public AnmeldenViewModel(INavigation navigation,
                                  IViewMapper viewMapper,
@@ -69,7 +61,7 @@ namespace hfupilot.app.ViewModels
             Benutzer = "";
             Passwort = "";
 
-            Navigation = new NavigationViewModel(navigation, viewMapper, userContext, httpClient);
+            
             LoginCommand = new RelayCommand(LoginHandler, CanExecute);
         }
 
@@ -93,7 +85,7 @@ namespace hfupilot.app.ViewModels
             {
                 _userContext.SessionID = anmelden.Session;
                 _userContext.Stufe = anmelden.Stufe;
-                _navigation.PushAsync(_viewMapper.Map(new DashboardViewModel()));
+                _navigation.PushAsync(_viewMapper.Map(new DashboardViewModel(_navigation,_viewMapper,_userContext,_httpClient)));
             }
             else
             {

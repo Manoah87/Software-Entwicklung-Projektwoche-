@@ -4,7 +4,7 @@ using Xamarin.Forms.Xaml;
 namespace hfupilot.app.Views.partialview
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Navigation : ContentView
+    public partial class Navigation : Grid
     {
         public Navigation()
         {

@@ -30,8 +30,8 @@ namespace hfupilot.app.ViewModels
 
             int filter = 1;
 
-            Task<HttpResponseMessage> Response = _httpClient.GetAsync($"/api/Stundenplan/{filter}/{_userContext.SessionID}");
-            Response.Wait();
+            //Task<HttpResponseMessage> Response = _httpClient.GetAsync($"/api/Stundenplan/{filter}/{_userContext.SessionID}");
+            //Response.Wait();
         }
 
 
