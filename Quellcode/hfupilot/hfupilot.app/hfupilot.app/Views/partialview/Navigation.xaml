@@ -5,12 +5,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="hfupilot.app.Views.partialview.Navigation">
-
     <StackLayout>
         <Button Text="Stundenplan"
                 Command="{Binding StundenplanCommand}" 
                 Style="{StaticResource DefaultButton}"/>
-        <Button Text="Meldung erfassen"/>
-        <Button Text="Meldungen anzeigen"/>
+        <Button Text="Meldung erfassen" Command="{Binding MeldungenErfassenCommand}" 
+                Style="{StaticResource DefaultButton}"/>
+        <Button Text="Meldungen anzeigen" Command="{Binding MeldungenAnzeigenCommand}" 
+                Style="{StaticResource DefaultButton}"/>
     </StackLayout>
 </Grid>
