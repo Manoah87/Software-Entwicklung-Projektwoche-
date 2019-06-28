@@ -15,7 +15,6 @@ namespace hfupilot.webapi.Controllers
     {
         private IConfiguration _configuration;
 
-
         public AuthentifizierungController(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -69,15 +68,44 @@ namespace hfupilot.webapi.Controllers
         }
 
         // PUT: api/Authentifizierung/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{sessionId}")]
+        [Route("abmeldung")]
+        public IActionResult Abmeldung(int sessionId)
         {
-        }
+            try
+            {
+                var spSessionID = new SqlParameter("i_SessionID", sessionId);
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+                SqlConnection conn = new SqlConnection(_configuration["ConnectionString"]);
+                SqlCommand cmd = new SqlCommand("EXECUTE dbo.pda_Abmeldung @i_SessionID", conn);
+                cmd.Parameters.Add(spSessionID);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                conn.Open();
+                da.Fill(ds);
+                conn.Close();
+                BasisFehlerProperties result;
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    DataRow row = ds.Tables[0].Rows[0];
+                    result = new BasisFehlerProperties()
+                    {
+                        Fehler = (int)row["Fehler"],
+                        FehlerMeldung = row["Fehlermeldung"].ToString()
+                    };
+                }
+                else
+                {
+                    result = new BasisFehlerProperties() { Fehler = 999, FehlerMeldung = "Keine Rückmeldung" };
+                }
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
         }
     }
 }

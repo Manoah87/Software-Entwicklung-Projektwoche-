@@ -54,6 +54,8 @@ namespace hfupilot.webapi.Controllers
                         result.StundenplanList.Add(
                             new Termine()
                             {
+                                Fehler = (int)row["Fehler"],
+                                FehlerMeldung = (string)row["Fehlermeldung"],
                                 Id = (int)row["ID"],
                                 Datum = (string)row["Datum"],
                                 Zeit = (string)row["Zeit"],
@@ -79,22 +81,5 @@ namespace hfupilot.webapi.Controllers
             }
         }
 
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
