@@ -7,23 +7,31 @@
              x:Class="hfupilot.app.App">
     <Application.Resources>
         <ResourceDictionary>
+            <Style
+                TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="White" />
+                <Setter Property="BarTextColor" Value="#005f8c" />
+            </Style>
             <Style x:Key="Titel" TargetType="Label">
-                <Setter Property="TextColor" Value="#FFFF0000" />
+                <Setter Property="TextColor" Value="#005f8c" />
+                <Setter Property="FontFamily" Value="Arial" />
             </Style>
             <Style x:Key="DefaultLabel" TargetType="Label">
-                <Setter Property="TextColor" Value="#FF0000FF" />
+                <Setter Property="TextColor" Value="#005f8c" />
             </Style>
             <Style x:Key="DefaultButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#FF0000FF" />
-                <Setter Property="TextColor" Value="#FFFFFFFF" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="TextColor" Value="#005f8c" />
+                <Setter Property="FontFamily" Value="Arial" />
             </Style>
             <Style x:Key="DefaultPicker" TargetType="Picker">
-                <Setter Property="BackgroundColor" Value="#660000FF" />
-                <Setter Property="TextColor" Value="#FFFFFFFF" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="TextColor" Value="#005f8c" />
+                <Setter Property="TitleColor" Value="#005f8c" />
             </Style>
             <Style x:Key="DefaultEditor" TargetType="Editor">
-                <Setter Property="BackgroundColor" Value="#660000FF" />
-                <Setter Property="TextColor" Value="#FFFFFFFF" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="TextColor" Value="#005f8c" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

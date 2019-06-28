@@ -8,12 +8,12 @@ using System.Net.Http;
 
 namespace hfupilot.app.ViewModels
 {
-    public class VerspaetungViewModel : ObservableObject
+    class MeldungViewModel : ObservableObject
     {
-        private List<string> _verspeatungsAuswahlsliste;
-        private string _begruendung;
-        private string _begruendungLaenge;
-        private int _verspaetungAuswahl;
+        private List<string> _artDerMeldungAuswahlsliste;
+        private string _meldung;
+        private string _meldungLaenge;
+        private int _artDerMeldungAuswahl;
 
         private readonly INavigation _navigation;
         private readonly IViewMapper _viewMapper;
@@ -21,7 +21,7 @@ namespace hfupilot.app.ViewModels
 
         public ICommand SpeichernCommand { get; set; }
 
-        public VerspaetungViewModel(INavigation navigation,
+        public MeldungViewModel(INavigation navigation,
             IViewMapper viewMapper,
             UserContext userContext,
             HttpClient httpClient)
@@ -30,72 +30,70 @@ namespace hfupilot.app.ViewModels
             _viewMapper = viewMapper;
             _httpClient = httpClient;
 
-            _begruendung = "";
+            _meldung = "";
 
-            _verspeatungsAuswahlsliste = new List<string>();
-            _verspeatungsAuswahlsliste.Add("Verspätung Wählen");
-            for (int i = 1; i < 5; i++)
-            {
-                _verspeatungsAuswahlsliste.Add($"{i*15} min");
-            }
+            _artDerMeldungAuswahlsliste = new List<string>();
+            _artDerMeldungAuswahlsliste.Add("Art Wählen");
+            _artDerMeldungAuswahlsliste.Add("Zimmerwechsel");
+            _artDerMeldungAuswahlsliste.Add("Sonstige Meldung");
 
             SpeichernCommand = new RelayCommand(SpeichernHandler, CanExecuteSpeichern);
         }
 
         public void SpeichernHandler(object obj)
         {
-            ((Page)obj).DisplayAlert("Auswahl", $"index: {_verspaetungAuswahl} \n ausrede: {_begruendung}", "OK");
+            ((Page)obj).DisplayAlert("Auswahl", $"index: {_artDerMeldungAuswahl} \n ausrede: {_meldung}", "OK");
 
         }
 
         public bool CanExecuteSpeichern(object obj)
         {
-            return _verspaetungAuswahl != 0 && _begruendung != "";
+            return _artDerMeldungAuswahl != 0 && _meldung != "";
         }
 
-        public List<string> Verspeatungen
+        public List<string> MeldungsAuswahl
         {
-            get => _verspeatungsAuswahlsliste;
+            get => _artDerMeldungAuswahlsliste;
             set
             {
-                _verspeatungsAuswahlsliste = value;
+                _artDerMeldungAuswahlsliste = value;
                 RaisePropertyChanged();
                 ((RelayCommand)SpeichernCommand)?.RaiseCanExecuteChanged();
             }
         }
 
-        public int AusgewaelteVerspaetung
+        public int AusgewaelteArtDerMeldung
         {
-            get => _verspaetungAuswahl;
+            get => _artDerMeldungAuswahl;
             set
             {
-                _verspaetungAuswahl = value;
+                _artDerMeldungAuswahl = value;
                 RaisePropertyChanged();
                 ((RelayCommand)SpeichernCommand)?.RaiseCanExecuteChanged();
             }
         }
 
-        public string Begruendung
+        public string Meldung
         {
-            get => _begruendung;
+            get => _meldung;
             set
             {
                 if (value.Length <= 512)
                 {
-                    _begruendung = value;
-                    BegruendungLaenge = (512 - value.Length).ToString();
+                    _meldung = value;
+                    MeldungLaenge = (512 - value.Length).ToString();
                 }
                 RaisePropertyChanged();
                 ((RelayCommand)SpeichernCommand)?.RaiseCanExecuteChanged();
             }
         }
 
-        public string BegruendungLaenge
+        public string MeldungLaenge
         {
-            get => _begruendungLaenge;
+            get => _meldungLaenge;
             set
             {
-                _begruendungLaenge = value;
+                _meldungLaenge = value;
                 RaisePropertyChanged();
             }
         }

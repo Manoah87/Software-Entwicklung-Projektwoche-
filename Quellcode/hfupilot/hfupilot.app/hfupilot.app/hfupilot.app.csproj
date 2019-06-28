@@ -12,6 +12,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resource\bzu_hf_tiwf_ohne.png" />
+    <None Remove="Resource\footer.png" />
+    <None Remove="Resource\hbu.png" />
+    <None Remove="Resource\hfu_icon.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\bzu_hf_tiwf_ohne.png" />
+    <EmbeddedResource Include="Resource\footer.png" />
+    <EmbeddedResource Include="Resource\hbu.png" />
+    <EmbeddedResource Include="Resource\hfu_icon.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="SimpleInjector" Version="4.6.0" />
     <PackageReference Include="System.Buffers" Version="4.5.0" />
@@ -35,6 +49,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\MeldungView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\partialview\Navigation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
