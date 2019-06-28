@@ -4,7 +4,9 @@
              xmlns:local="clr-namespace:hfupilot.app.ViewModels"
              xmlns:partial="clr-namespace:hfupilot.app.Views.partialview"
              x:Class="hfupilot.app.Views.DashboardMeldungen"
-             Title="Meldungen"
+             BackgroundImageSource="{background:EmbeddedImage ResourceId=hfupilot.app.Resource.footer.png}"
+             xmlns:background="clr-namespace:ProjectName.MarkupExtensions"
+             Title="Aktuelle Meldungen"
              x:Name="Page">
     <ContentPage.Content>
         <StackLayout Margin="0,0,20,20">

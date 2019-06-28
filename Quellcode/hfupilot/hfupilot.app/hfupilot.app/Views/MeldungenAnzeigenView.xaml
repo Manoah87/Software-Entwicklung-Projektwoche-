@@ -1,20 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:hfupilot.app.ViewModels"
-             xmlns:partial="clr-namespace:hfupilot.app.Views.partialview"
-             BackgroundImageSource="{background:EmbeddedImage ResourceId=hfupilot.app.Resource.footer.png}"
-             xmlns:background="clr-namespace:ProjectName.MarkupExtensions"
-             x:Class="hfupilot.app.Views.DashboardTermine"
-             Title="Termine"
-             x:Name="Page">
-    <!--<ContentPage.BindingContext>
-        <local:DashboardTermineViewModel/>
-    </ContentPage.BindingContext>-->
+             x:Class="hfupilot.app.Views.MeldungenAnzeigenView">
     <ContentPage.Content>
-        <StackLayout Margin="0,0,20,20">
-            <partial:Navigation BindingContext="{Binding Navigation}" />
-            <ListView ItemsSource="{Binding Termine}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ListView Grid.Row="1" Grid.Column="1">
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -26,14 +27,16 @@
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="1" Margin="5,5" Text="Lehrperson: "/>
-                                    <Label Grid.Column="2" Text="{Binding Lehrperson}"/>
+                                    <Label Grid.Column="1" Margin="5,5" TextColor="Black" Text="Lehrperson: "/>
+                                    <!--<Label Grid.Column="2" Text="{Binding Lehrperson}"/>-->
                                 </Grid>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+
+
             </ListView>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -23,6 +23,16 @@ namespace hfupilot.app.Services
                     result = new StundenplanView();
                     result.BindingContext = stundenplanViewModel;
                     break;
+
+                case MeldungViewModel meldungViewModel:
+                    result = new MeldungView();
+                    result.BindingContext = meldungViewModel;
+                    break;
+
+                case MeldungenAnzeigenViewModel meldungenAnzeigenViewModel:
+                    result = new MeldungenAnzeigenView();
+                    result.BindingContext = meldungenAnzeigenViewModel;
+                    break;
             }
 
             return result;
