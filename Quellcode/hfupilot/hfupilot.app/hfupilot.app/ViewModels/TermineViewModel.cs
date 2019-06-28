@@ -15,6 +15,11 @@ namespace hfupilot.app.ViewModels
 
         }
 
+        public TermineViewModel(Termine ptermine)
+        {
+            termin = ptermine;
+        }
+
         public int Id
         {
             get { return termin.Id; }
