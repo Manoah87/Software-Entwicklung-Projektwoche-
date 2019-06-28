@@ -5,7 +5,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              mc:Ignorable="d" 
              x:Class="hfupilot.app.Views.AnmeldenView"
-             x:Name="Page">
+             x:Name="Page"
+             BackgroundImageSource="{local:EmbeddedImage ResourceId=hfupilot.app.Resource.footer.png}"
+             xmlns:local="clr-namespace:ProjectName.MarkupExtensions">
     <ContentPage.Content>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -19,14 +21,15 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <StackLayout Grid.Column="1" Grid.Row="1">
-                <Label Text="Welcome to Xamarin.Forms!"
+                <Label Text="Anmeldung"
                     VerticalOptions="CenterAndExpand" 
                     HorizontalOptions="CenterAndExpand" Style="{StaticResource Titel}" />
+                <Image Grid.Row="2" Grid.Column="1" Source="{local:EmbeddedImage ResourceId=hfupilot.app.Resource.bzu_hf_tiwf_ohne.png }"></Image>
                 <Label Text="Benutzer" 
                        Style="{StaticResource DefaultLabel}"/>
                 <Entry x:Name="TxtBenutzer" 
                        Text="{Binding Benutzer, Mode=TwoWay}" />
-                <Label Text="Passowrt" 
+                <Label Text="Passwort" 
                        Style="{StaticResource DefaultLabel}"/>
                 <Entry x:Name="TxtPassowrt" 
                        IsPassword="True"  
