@@ -2,7 +2,9 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:TabbedDashB="clr-namespace:hfupilot.app.Views"
-             x:Class="hfupilot.app.Views.DashboardView">
+             x:Class="hfupilot.app.Views.DashboardView"
+             Title="Dashboard"
+            BarBackgroundColor="#005f8c">
     <TabbedDashB:DashboardMeldungen BindingContext="{Binding DashboardMeldungenViewModel}"/>
     <TabbedDashB:DashboardTermine BindingContext="{Binding DashboardTermineViewModel}"/>
 </TabbedPage>
