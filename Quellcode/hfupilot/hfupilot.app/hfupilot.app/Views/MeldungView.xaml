@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="hfupilot.app.Views.VerspaetungView"
+             x:Class="hfupilot.app.Views.MeldungView"
              x:Name="Page"
-             Title="Verspätung"
+             Title="Meldung"
              BackgroundImageSource="{local:EmbeddedImage ResourceId=hfupilot.app.Resource.footer.png}"
              xmlns:local="clr-namespace:ProjectName.MarkupExtensions">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="{local:EmbeddedImage ResourceId=hfupilot.app.Resource.hfu_icon.jpg}" />
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -23,26 +23,26 @@
                 <ColumnDefinition Width="8*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-           
+
             <StackLayout Grid.Row="1" Grid.Column="1">
-                <Picker x:Name="AuswahlVerspaetung" 
-                        Title="Treffen sie Ihre Auswahl" 
-                        ItemsSource="{Binding Verspeatungen}"
-                        SelectedIndex="{Binding AusgewaelteVerspaetung}"
+                <Picker x:Name="ArtDerMeldung" 
+                        Title="Art der Meldung"
+                        ItemsSource="{Binding MeldungsAuswahl}"
+                        SelectedIndex="{Binding AusgewaelteArtDerMeldung}"
                         Style="{StaticResource DefaultPicker}">
                 </Picker>
 
-                <Editor Placeholder="Begründung" 
-                        Text="{Binding Begruendung, Mode=TwoWay}"
+                <Editor Placeholder="Meldung" 
+                        Text="{Binding Meldung, Mode=TwoWay}"
                         VerticalOptions ="FillAndExpand"
                         Style="{StaticResource DefaultEditor}">
                 </Editor>
-                
-                <Label Text="{Binding BegruendungLaenge}"
+
+                <Label Text="{Binding MeldungLaenge}"
                         HorizontalOptions ="End"
                         Style="{StaticResource DefaultLabel}">
                 </Label>
-                
+
                 <Button VerticalOptions="EndAndExpand" 
                         Text="Speichern" 
                         Command="{Binding SpeichernCommand, Mode=TwoWay}" 
