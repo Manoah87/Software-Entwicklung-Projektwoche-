@@ -23,7 +23,7 @@ namespace hfupilot.app
             //TODO prüfen ob abgeschlossen (sealed)
             if (!DesignMode.IsDesignModeEnabled)
             {
-                var mainPage = new AnmeldenView();
+                var mainPage = new DashboardView();
                 //var mainPage = new DashboardView();
                 var navigationPage = new NavigationPage(mainPage);
                 var userContext = new UserContext();
@@ -39,7 +39,7 @@ namespace hfupilot.app
                 Services.RegisterInstance(userContext);
 
                 // Setup the initial binding context
-                mainPage.BindingContext = Services.GetInstance<AnmeldenViewModel>();
+                mainPage.BindingContext = Services.GetInstance<DashboardViewModel>();
                 //mainPage.BindingContext = Services.GetInstance<DashboardViewModel>();
                 // Assign the main page
                 MainPage = navigationPage;
