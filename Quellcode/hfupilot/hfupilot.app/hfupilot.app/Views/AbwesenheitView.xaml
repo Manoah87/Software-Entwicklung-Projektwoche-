@@ -35,15 +35,13 @@
                         HorizontalOptions ="End"
                         Style="{StaticResource DefaultLabel}">
                 </Label>
-                
+
                 <Button VerticalOptions="EndAndExpand" 
                         Text="Speichern" 
                         Command="{Binding SpeichernCommand, Mode=TwoWay}" 
                         CommandParameter="{x:Reference Name=Page}" 
                         Style="{StaticResource DefaultButton}">
                 </Button>
-
-                
             </StackLayout>
 
             <Image Grid.Row="2" Grid.Column="1" Source="{local:EmbeddedImage ResourceId=hfupilot.app.Resource.bzu_hf_tiwf_ohne.png }"></Image>

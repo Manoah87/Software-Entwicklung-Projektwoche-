@@ -12,6 +12,17 @@ namespace hfupilot.app.Droid
     [Activity(Label = "hfupilot.app", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        #region BiometricSetup
+        public MainActivity()
+        {
+            Activity = this;
+        }
+
+        public static Activity Activity { get; private set; }
+
+        #endregion BiometricSetup
+
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
