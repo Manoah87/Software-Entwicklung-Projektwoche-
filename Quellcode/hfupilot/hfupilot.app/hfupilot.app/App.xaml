@@ -7,23 +7,27 @@
              x:Class="hfupilot.app.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Style
-                TargetType="NavigationPage">
+            <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="White" />
                 <Setter Property="BarTextColor" Value="#005f8c" />
             </Style>
             <Style x:Key="Titel" TargetType="Label">
                 <Setter Property="TextColor" Value="#005f8c" />
                 <Setter Property="FontFamily" Value="Arial" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="Margin" Value="0,0,30,0" />
             </Style>
             <Style x:Key="DefaultLabel" TargetType="Label">
-                <Setter Property="TextColor" Value="#005f8c" />
+                <Setter Property="TextColor" Value="#FF005f8c" />
             </Style>
             <Style x:Key="DefaultButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="TextColor" Value="#005f8c" />
                 <Setter Property="FontFamily" Value="Arial" />
-            </Style>
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="HeightRequest" Value="30" />
+            </Style>0
             <Style x:Key="DefaultPicker" TargetType="Picker">
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="TextColor" Value="#005f8c" />

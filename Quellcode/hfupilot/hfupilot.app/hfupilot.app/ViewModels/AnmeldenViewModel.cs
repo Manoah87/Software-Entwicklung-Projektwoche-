@@ -85,7 +85,7 @@ namespace hfupilot.app.ViewModels
             {
                 _userContext.SessionID = anmelden.Session;
                 _userContext.Stufe = anmelden.Stufe;
-                _navigation.PushAsync(_viewMapper.Map(new DashboardViewModel(_navigation,_viewMapper,_userContext,_httpClient)));
+                _navigation.PushAsync(_viewMapper.Map(App.Services.GetInstance<DashboardViewModel>()));
             }
             else
             {

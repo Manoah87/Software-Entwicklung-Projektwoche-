@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using hfupilot.app.CustomFramework.mvvm;
 using hfupilot.app.Helper;
 using hfupilot.app.Services;
+using hfupilot.Models;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace hfupilot.app.ViewModels
@@ -52,16 +56,23 @@ namespace hfupilot.app.ViewModels
 
             Navigation = new NavigationViewModel(navigation, viewMapper, userContext, httpClient);
 
-
-
-            aktualisiereMeldungen();
         }
 
-        private void aktualisiereMeldungen()
+        public void Update()
         {
-         Meldungen.Add(new MeldungenViewModel() {Art = 1,Datum = "26.07.17",Id=5,MeldungNachricht = "Hello World",Zeit = "20:00"});
-         Meldungen.Add(new MeldungenViewModel() {Art = 2,Datum = "29.07.17",Id=1,MeldungNachricht = "Tschau World",Zeit = "22:00"});
-         Meldungen.Add(new MeldungenViewModel() {Art = 3,Datum = "30.07.17",Id=6,MeldungNachricht = "Verschiebung",Zeit = "05:00"});
+            //Meldungen Laden
+            Task<HttpResponseMessage> Response = _httpClient.GetAsync($"/api/Meldungen/{_userContext.SessionID}/0");
+            Response.Wait();
+
+            //Message auslessen
+            Task<string> stundenplan = Response.Result.Content.ReadAsStringAsync();
+            stundenplan.Wait();
+
+            Meldungen objMeldungen = JsonConvert.DeserializeObject<Meldungen>(stundenplan.Result);
+            if (objMeldungen != null)
+            {
+                objMeldungen.MeldungList.ToList().ForEach(m => Meldungen.Add(new MeldungenViewModel(m)));
+            }
 
         }
 

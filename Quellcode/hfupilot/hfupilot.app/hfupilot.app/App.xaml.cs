@@ -24,7 +24,7 @@ namespace hfupilot.app
             if (!DesignMode.IsDesignModeEnabled)
             {
                 var mainPage = new AnmeldenView();
-                //var mainPage = new DashboardView();
+                
                 var navigationPage = new NavigationPage(mainPage);
                 var userContext = new UserContext();
 
@@ -38,9 +38,13 @@ namespace hfupilot.app
                 Services.RegisterInstance(httpClient);
                 Services.RegisterInstance(userContext);
 
+                Services.Register<DashboardViewModel>(Lifestyle.Singleton);
+                Services.Register<DashboardMeldungenViewModel>(Lifestyle.Singleton);
+                Services.Register<DashboardTermineViewModel>(Lifestyle.Singleton);
+
                 // Setup the initial binding context
                 mainPage.BindingContext = Services.GetInstance<AnmeldenViewModel>();
-                //mainPage.BindingContext = Services.GetInstance<DashboardViewModel>();
+                Services.Verify();
                 // Assign the main page
                 MainPage = navigationPage;
             }

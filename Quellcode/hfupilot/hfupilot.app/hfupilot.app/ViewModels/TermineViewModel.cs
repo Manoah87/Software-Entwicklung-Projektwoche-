@@ -17,7 +17,17 @@ namespace hfupilot.app.ViewModels
 
         public TermineViewModel(Termine ptermine)
         {
-            termin = ptermine;
+            termin = new Termine()
+            {
+                Id = ptermine.Id,
+                Titel = ptermine.Titel,
+                Bezeichnung = ptermine.Bezeichnung,
+                Code = ptermine.Code,
+                Datum = ptermine.Datum,
+                Zeit = ptermine.Zeit,
+                Zimmer = ptermine.Zimmer,
+                Lehrperson = ptermine.Lehrperson
+            };
         }
 
         public int Id
@@ -26,7 +36,7 @@ namespace hfupilot.app.ViewModels
             set
             {
                 termin.Id = value;
-                RaisePropertyChanged("Id");
+                RaisePropertyChanged();
             }
         }
 
@@ -36,7 +46,7 @@ namespace hfupilot.app.ViewModels
             set
             {
                 termin.Datum = value;
-                RaisePropertyChanged("Datum");
+                RaisePropertyChanged();
             }
         }
 
@@ -46,7 +56,7 @@ namespace hfupilot.app.ViewModels
             set
             {
                 termin.Zeit = value;
-                RaisePropertyChanged("Zeit");
+                RaisePropertyChanged();
             }
         }
 
@@ -56,7 +66,7 @@ namespace hfupilot.app.ViewModels
             set
             {
                 termin.Code = value;
-                RaisePropertyChanged("Code");
+                RaisePropertyChanged();
             }
         }
 
@@ -66,7 +76,7 @@ namespace hfupilot.app.ViewModels
             set
             {
                 termin.Titel = value;
-                RaisePropertyChanged("Titel");
+                RaisePropertyChanged();
             }
         }
 
@@ -76,7 +86,7 @@ namespace hfupilot.app.ViewModels
             set
             {
                 termin.Bezeichnung = value;
-                RaisePropertyChanged("Bezeichnung");
+                RaisePropertyChanged();
             }
         }
 
@@ -86,17 +96,20 @@ namespace hfupilot.app.ViewModels
             set
             {
                 termin.Zimmer = value;
-                RaisePropertyChanged("Zimmer");
+                RaisePropertyChanged();
             }
         }
 
         public string Lehrperson
         {
-            get { return termin.Lehrperson; }
+            get
+            {
+                return termin.Lehrperson;
+            }
             set
             {
                 termin.Lehrperson = value;
-                RaisePropertyChanged("Lehrperson");
+                RaisePropertyChanged();
             }
         }
 

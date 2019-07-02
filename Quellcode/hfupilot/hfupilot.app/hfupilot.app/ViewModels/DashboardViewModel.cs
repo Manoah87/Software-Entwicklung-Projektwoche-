@@ -42,9 +42,14 @@ namespace hfupilot.app.ViewModels
             UserContext userContext,
             HttpClient httpClient)
         {
-            DashboardMeldungenViewModel = new DashboardMeldungenViewModel(navigation,viewMapper,userContext,httpClient);
-            DashboardTermineViewModel = new DashboardTermineViewModel(navigation,viewMapper,userContext,httpClient);
+            DashboardMeldungenViewModel = App.Services.GetInstance<DashboardMeldungenViewModel>(); 
+            DashboardTermineViewModel = App.Services.GetInstance<DashboardTermineViewModel>(); 
+        }
 
+        public void Update()
+        {
+            DashboardTermineViewModel.Update();
+            DashboardMeldungenViewModel.Update();
         }
     }
 }

@@ -7,6 +7,10 @@ using hfupilot.app.CustomFramework.mvvm;
 using hfupilot.app.Helper;
 using hfupilot.app.Services;
 using Xamarin.Forms;
+using Newtonsoft.Json;
+using System.Linq;
+using System.Threading.Tasks;
+using hfupilot.Models;
 
 namespace hfupilot.app.ViewModels
 {
@@ -16,13 +20,21 @@ namespace hfupilot.app.ViewModels
         #region Felder
 
         private NavigationViewModel navigation;
-
+        private ObservableCollection<TermineViewModel> termine;
         private readonly INavigation _navigation;
         private readonly IViewMapper _viewMapper;
         private readonly HttpClient _httpClient;
         private readonly UserContext _userContext;
 
-        public ObservableCollection<TermineViewModel> Termine { get; set; }
+        public ObservableCollection<TermineViewModel> TerminListe
+        {
+            get => termine;
+            set
+            {
+                termine = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public NavigationViewModel Navigation
         {
@@ -48,53 +60,35 @@ namespace hfupilot.app.ViewModels
             _httpClient = httpClient;
             _userContext = userContext;
 
-            Termine = new ObservableCollection<TermineViewModel>();
+
 
             Navigation = new NavigationViewModel(navigation, viewMapper, userContext, httpClient);
 
-            aktualisiereTermine();
         }
 
         #endregion
 
-        private void aktualisiereTermine()
+        /// <summary>
+        /// Liste der Termine wird nachgeladen
+        /// </summary>
+        public void Update()
         {
-            Termine.Clear();
+            TerminListe = new ObservableCollection<TermineViewModel>();
+            TerminListe.Clear();
 
-            Termine.Add(new TermineViewModel(){
-                Id = 5,
-                Datum = "heute",
-                Zeit = "20:00",
-                Code = "XYZ",
-                Titel = "SW-Entwickeln",
-                Bezeichnung = "Einsteiger-Modul",
-                Zimmer = "126a",
-                Lehrperson = "Paul"
-            });
+            //Termine Laden
+            Task<HttpResponseMessage> Response = _httpClient.GetAsync($"/api/Stundenplan/{_userContext.SessionID}/{(int)ZeitFiler.diese_Woche}");
+            Response.Wait();
 
-            Termine.Add(new TermineViewModel()
+            //Message auslessen
+            Task<string> stundenplan = Response.Result.Content.ReadAsStringAsync();
+            stundenplan.Wait();
+
+            Stundenplan objStundenplan = JsonConvert.DeserializeObject<Stundenplan>(stundenplan.Result);
+            if (objStundenplan != null)
             {
-                Id = 5,
-                Datum = "heute",
-                Zeit = "20:00",
-                Code = "XYZ",
-                Titel = "SW-Entwickeln",
-                Bezeichnung = "Einsteiger-Modul",
-                Zimmer = "126a",
-                Lehrperson = "Heinz"
-            });
-            Termine.Add(new TermineViewModel()
-            {
-                Id = 5,
-                Datum = "heute",
-                Zeit = "18:00",
-                Code = "asdf",
-                Titel = "Datenbank",
-                Bezeichnung = "Einsteiger-Modul",
-                Zimmer = "126a",
-                Lehrperson = "Urs"
-            });
-
+                objStundenplan.StundenplanList.ToList().ForEach(t => TerminListe.Add(new TermineViewModel(t)));
+            }
         }
     }
 }

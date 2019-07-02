@@ -5,6 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="hfupilot.app.Views.partialview.Navigation">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="auto" />
+    </Grid.RowDefinitions>
     <StackLayout>
         <Button Text="Stundenplan"
                 Command="{Binding StundenplanCommand}" 

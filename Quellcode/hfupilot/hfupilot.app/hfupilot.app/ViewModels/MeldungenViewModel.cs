@@ -12,9 +12,19 @@ namespace hfupilot.app.ViewModels
 
         public MeldungenViewModel()
         {
-
             meldung = new Meldung();
+        }
 
+        public MeldungenViewModel(Meldung pmeldung)
+        {
+            meldung = new Meldung()
+            {
+                Id = pmeldung.Id,
+                Art = pmeldung.Art,
+                Datum = pmeldung.Datum,
+                MeldungNachricht = pmeldung.MeldungNachricht,
+                Zeit = pmeldung.Zeit
+            };
         }
 
         #region Properties
@@ -25,7 +35,7 @@ namespace hfupilot.app.ViewModels
             set
             {
                 meldung.Id = value;
-                RaisePropertyChanged("Id");
+                RaisePropertyChanged();
             }
         }
 
@@ -35,7 +45,7 @@ namespace hfupilot.app.ViewModels
             set
             {
                 meldung.Datum = value;
-                RaisePropertyChanged("Datum");
+                RaisePropertyChanged();
             }
         }
 
@@ -44,7 +54,7 @@ namespace hfupilot.app.ViewModels
             set
             {
                 meldung.Zeit = value;
-                RaisePropertyChanged("Zeit");
+                RaisePropertyChanged();
             }
         }
 
@@ -54,14 +64,18 @@ namespace hfupilot.app.ViewModels
             set
             {
                 meldung.MeldungNachricht = value;
-                RaisePropertyChanged("MeldungNachricht");
+                RaisePropertyChanged();
             }
         }
 
         public int Art
         {
             get { return meldung.Art; }
-            set { meldung.Art = value; }
+            set
+            {
+                meldung.Art = value;
+                RaisePropertyChanged();
+            }
         }
 
         #endregion

@@ -8,32 +8,46 @@
              x:Class="hfupilot.app.Views.DashboardTermine"
              Title="Termine"
              x:Name="Page">
-    <!--<ContentPage.BindingContext>
-        <local:DashboardTermineViewModel/>
-    </ContentPage.BindingContext>-->
     <ContentPage.Content>
-        <StackLayout Margin="0,0,20,20">
-            <partial:Navigation BindingContext="{Binding Navigation}" />
-            <ListView ItemsSource="{Binding Termine}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <partial:Navigation Grid.Column="1" BindingContext="{Binding Navigation}" />
+            <ScrollView></ScrollView>
+            <ListView Grid.Column="1" Grid.Row="1" 
+                      FlowDirection="LeftToRight"
+                      RowHeight="125"
+                      VerticalScrollBarVisibility="Default"
+                      HeightRequest="375"
+                      ItemsSource="{Binding TerminListe, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <Grid Margin="20,50">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="3*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="1" Margin="5,5" Text="Lehrperson: "/>
-                                    <Label Grid.Column="2" Text="{Binding Lehrperson}"/>
-                                </Grid>
+                            <StackLayout Spacing="10">
+                                <Label Text="{Binding Titel, Mode=TwoWay}" Style="{StaticResource DefaultLabel}"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Datum, Mode=TwoWay}" Style="{StaticResource DefaultLabel}"/>
+                                    <Label Text=", " Style="{StaticResource DefaultLabel}" />
+                                    <Label Text="{Binding Zeit, Mode=TwoWay}" Style="{StaticResource DefaultLabel}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Zimmer, Mode=TwoWay}" Style="{StaticResource DefaultLabel}"/>
+                                    <Label Text=", " Style="{StaticResource DefaultLabel}" />
+                                    <Label Text="{Binding Lehrperson, Mode=TwoWay}" Style="{StaticResource DefaultLabel}"/>
+                                </StackLayout>
+                                <Label Text="{Binding Bezeichnung, Mode=TwoWay}" Style="{StaticResource DefaultLabel}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

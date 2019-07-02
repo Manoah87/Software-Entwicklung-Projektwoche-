@@ -18,13 +18,23 @@
                 </Picker.Items>
             </Picker>
             <!--<ListView Grid.Row="2" FlowDirection="LeftToRight" ItemsSource="{Binding}">-->
-            <ListView Grid.Row="2" FlowDirection="LeftToRight">
+            <ListView Grid.Row="2" FlowDirection="LeftToRight" ItemsSource="{Binding StundenplanList, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Spacing="10">
-                                <!--<Label Text="{Binding}"/>-->
-                                <Label Text="Item1"/>
+                                <Label Text="{Binding Titel, Mode=TwoWay}" Style="{StaticResource DefaultLabel}"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Datum, Mode=TwoWay}" Style="{StaticResource DefaultLabel}"/>
+                                    <Label Text=", " Style="{StaticResource DefaultLabel}" />
+                                    <Label Text="{Binding Zeit, Mode=TwoWay}" Style="{StaticResource DefaultLabel}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Zimmer, Mode=TwoWay}" Style="{StaticResource DefaultLabel}"/>
+                                    <Label Text=", " Style="{StaticResource DefaultLabel}" />
+                                    <Label Text="{Binding Lehrperson, Mode=TwoWay}" Style="{StaticResource DefaultLabel}"/>
+                                </StackLayout>
+                                <Label Text="{Binding Bezeichnung, Mode=TwoWay}" Style="{StaticResource DefaultLabel}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
