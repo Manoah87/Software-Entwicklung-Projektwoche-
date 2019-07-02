@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "101085198075",
+    "firebase_url": "https://hfupilot.firebaseio.com",
+    "project_id": "hfupilot",
+    "storage_bucket": "hfupilot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101085198075:android:a31c0798db99e2e7",
+        "android_client_info": {
+          "package_name": "com.companyname.hfupilot.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101085198075-82hi7on1rtbmo8u4m4vgo5ts2pr85j6m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYLs605Whi3oMd2p4msOjF4XbH7sGOKlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101085198075-82hi7on1rtbmo8u4m4vgo5ts2pr85j6m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
