@@ -7,18 +7,27 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
             <Entry Grid.Row="0" VerticalOptions="Center" Text="Stundenplan"/>
-            <Picker x:Name="AuswahlZeitraum" Grid.Row="1" SelectedIndex="0" HorizontalOptions="Center">
+            <Picker x:Name="AuswahlZeitraum" Grid.Row="1" 
+                    SelectedIndex="0" 
+                    HorizontalOptions="Center"
+                    WidthRequest="200"
+                    SelectedItem="{Binding FilterName}">
                 <Picker.Items>
                     <x:String>heute</x:String>
                     <x:String>diese Woche</x:String>
                     <x:String>nächste Woche</x:String>
                 </Picker.Items>
             </Picker>
-            <!--<ListView Grid.Row="2" FlowDirection="LeftToRight" ItemsSource="{Binding}">-->
-            <ListView Grid.Row="2" FlowDirection="LeftToRight" ItemsSource="{Binding StundenplanList, Mode=TwoWay}">
+            <ListView Grid.Row="2" 
+                      FlowDirection="LeftToRight" 
+                      ItemsSource="{Binding StundenplanList, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

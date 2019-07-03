@@ -25,7 +25,7 @@
                       FlowDirection="LeftToRight"
                       RowHeight="125"
                       VerticalScrollBarVisibility="Default"
-                      HeightRequest="375"
+                      HeightRequest="250"
                       ItemsSource="{Binding TerminListe, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

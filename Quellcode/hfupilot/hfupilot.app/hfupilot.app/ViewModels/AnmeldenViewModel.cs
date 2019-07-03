@@ -89,6 +89,8 @@ namespace hfupilot.app.ViewModels
             }
             else
             {
+                Benutzer = "";
+                Passwort = "";
                 ((Page)obj).DisplayAlert("Bestätigen", anmelden.FehlerMeldung, "OK");
             }
 

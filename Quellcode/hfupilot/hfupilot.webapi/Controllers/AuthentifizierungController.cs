@@ -68,7 +68,7 @@ namespace hfupilot.webapi.Controllers
         }
 
         // PUT: api/Authentifizierung/5
-        [HttpPut("{sessionId}")]
+        [HttpGet("{sessionId}")]
         [Route("abmeldung")]
         public IActionResult Abmeldung(int sessionId)
         {
