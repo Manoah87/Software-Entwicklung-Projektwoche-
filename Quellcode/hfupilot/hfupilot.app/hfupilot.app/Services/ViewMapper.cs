@@ -23,8 +23,8 @@ namespace hfupilot.app.Services
                 case StundenplanViewModel stundenplanViewModel:
                     result = new StundenplanView();
                     result.BindingContext = stundenplanViewModel;
+                    stundenplanViewModel.Update(true);
                     break;
-
                 case MeldungViewModel meldungViewModel:
                     result = new MeldungView();
                     result.BindingContext = meldungViewModel;
@@ -35,6 +35,7 @@ namespace hfupilot.app.Services
                     result.BindingContext = meldungenAnzeigenViewModel;
                     break;
             }
+
 
             return result;
         }

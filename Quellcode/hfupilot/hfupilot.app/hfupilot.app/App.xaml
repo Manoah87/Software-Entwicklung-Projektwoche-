@@ -14,16 +14,19 @@
             <Style x:Key="Titel" TargetType="Label">
                 <Setter Property="TextColor" Value="#005f8c" />
                 <Setter Property="FontFamily" Value="Arial" />
-                <Setter Property="FontSize" Value="15" />
-                <Setter Property="Margin" Value="0,0,30,0" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="0,0,0,100" />
             </Style>
             <Style x:Key="DefaultLabel" TargetType="Label">
                 <Setter Property="TextColor" Value="#FF005f8c" />
+                <Setter Property="FontSize" Value="Medium" />
             </Style>
             <Style x:Key="DefaultButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="TextColor" Value="#005f8c" />
                 <Setter Property="FontFamily" Value="Arial" />
+                <Setter Property="FontSize" Value="Large" />
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="HeightRequest" Value="30" />

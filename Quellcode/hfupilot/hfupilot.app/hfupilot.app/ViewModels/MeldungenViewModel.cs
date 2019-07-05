@@ -78,6 +78,35 @@ namespace hfupilot.app.ViewModels
             }
         }
 
+        public string StrArt
+        {
+            get
+            {
+                string result;
+
+                switch (Art)
+                {
+                    case 1:
+                        result = "Verspätung Studierender/r";
+                        break;
+                    case 2:
+                        result = "Abwesenheit";
+                        break;
+                    case 3:
+                        result = "Verspätung Dozierende/r";
+                        break;
+                    case 9:
+                        result = "Sonstige Meldung";
+                        break;
+                    default:
+                        result = "unbekannt";
+                        break;
+                }
+
+                return result;
+            }
+        }
+
         #endregion
 
     }

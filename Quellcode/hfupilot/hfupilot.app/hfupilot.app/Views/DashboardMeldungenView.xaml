@@ -9,20 +9,40 @@
              Title="Aktuelle Meldungen"
              x:Name="Page">
     <ContentPage.Content>
-        <StackLayout Margin="0,0,20,20">
-            <partial:Navigation BindingContext="{Binding Navigation}" />
-            <ListView Margin="20,50" ItemsSource="{Binding Meldungen}">
+        <StackLayout>
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="300" />
+                <RowDefinition Height="*" />    
+            </Grid.RowDefinitions>
+            <partial:Navigation Grid.Column="1" BindingContext="{Binding Navigation}" />
+            <ListView RowHeight="100" 
+                      Grid.Column="1" Grid.Row="1"
+                      ItemsSource="{Binding Meldungen}" 
+                      HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Label Text="Datum: " TextColor="Blue"/>
-                                <Label Text="{Binding Datum}" TextColor="Blue"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Datum}" Style="{StaticResource DefaultLabel}" />
+                                    <Label Text="," />
+                                    <Label Text="{Binding Zeit}" Style="{StaticResource DefaultLabel}" />
+                                </StackLayout>
+                                <Label Text="{Binding StrArt}" Style="{StaticResource DefaultLabel}"/>
+                                <Label Text="{Binding MeldungNachricht}" Style="{StaticResource DefaultLabel}" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

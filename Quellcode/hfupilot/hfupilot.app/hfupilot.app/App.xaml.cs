@@ -41,6 +41,9 @@ namespace hfupilot.app
                 Services.Register<DashboardViewModel>(Lifestyle.Singleton);
                 Services.Register<DashboardMeldungenViewModel>(Lifestyle.Singleton);
                 Services.Register<DashboardTermineViewModel>(Lifestyle.Singleton);
+                Services.Register<StundenplanViewModel>(Lifestyle.Singleton);
+                Services.Register<MeldungenAnzeigenViewModel>(Lifestyle.Singleton);
+                Services.Register<MeldungViewModel>(Lifestyle.Singleton);
 
                 // Setup the initial binding context
                 mainPage.BindingContext = Services.GetInstance<AnmeldenViewModel>();

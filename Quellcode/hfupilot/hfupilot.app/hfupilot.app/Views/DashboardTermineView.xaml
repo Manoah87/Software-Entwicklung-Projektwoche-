@@ -17,6 +17,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="300" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <partial:Navigation Grid.Column="1" BindingContext="{Binding Navigation}" />
@@ -25,7 +26,7 @@
                       FlowDirection="LeftToRight"
                       RowHeight="125"
                       VerticalScrollBarVisibility="Default"
-                      HeightRequest="250"
+                      HasUnevenRows="True"
                       ItemsSource="{Binding TerminListe, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

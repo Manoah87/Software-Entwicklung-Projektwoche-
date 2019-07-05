@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:b="clr-namespace:Xamarin.Behaviors;assembly=Xamarin.Behaviors"
              mc:Ignorable="d"
              x:Class="hfupilot.app.Views.partialview.Navigation">
     <Grid.RowDefinitions>
@@ -16,5 +17,10 @@
                 Style="{StaticResource DefaultButton}"/>
         <Button Text="Meldungen anzeigen" Command="{Binding MeldungenAnzeigenCommand}" 
                 Style="{StaticResource DefaultButton}"/>
+        <Button Text="Abmelden" 
+                    Grid.Column="1" Grid.Row="3"
+                    Command="{Binding LogoutCommand}" 
+                    CommandParameter="" 
+                    Style="{StaticResource Key=DefaultButton}" />
     </StackLayout>
 </Grid>

@@ -50,8 +50,6 @@ namespace hfupilot.app.ViewModels
             _httpClient = httpClient;
             _userContext = userContext;
 
-
-
             Meldungen = new ObservableCollection<MeldungenViewModel>();
 
             Navigation = new NavigationViewModel(navigation, viewMapper, userContext, httpClient);

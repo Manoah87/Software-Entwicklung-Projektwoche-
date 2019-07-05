@@ -1,20 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="hfupilot.app.Views.StundenplanView">
+             x:Class="hfupilot.app.Views.StundenplanView"
+             x:Name="Page">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="350"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
             </Grid.ColumnDefinitions>
-            <Entry Grid.Row="0" VerticalOptions="Center" Text="Stundenplan"/>
-            <Picker x:Name="AuswahlZeitraum" Grid.Row="1" 
+            <Label Grid.Row="0" 
+                   Grid.Column="1" 
+                   VerticalOptions="Center" 
+                   Text="Stundenplan"
+                   Style="{StaticResource Titel}"/>
+            <Picker x:Name="AuswahlZeitraum" 
+                    Grid.Column="1" Grid.Row="1" 
                     SelectedIndex="0" 
                     HorizontalOptions="Center"
                     WidthRequest="200"
@@ -25,8 +34,10 @@
                     <x:String>nächste Woche</x:String>
                 </Picker.Items>
             </Picker>
-            <ListView Grid.Row="2" 
+            <ListView Grid.Column="1" Grid.Row="2" 
                       FlowDirection="LeftToRight" 
+                      RowHeight="125"
+                      HasUnevenRows="True"
                       ItemsSource="{Binding StundenplanList, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -48,7 +59,12 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>              
+            </ListView>
+            <Button Text="Abmelden" 
+                    Grid.Column="1" Grid.Row="3"
+                    Command="{Binding LogoutCommand}" 
+                    CommandParameter="{x:Reference Name=Page}" 
+                    Style="{StaticResource Key=DefaultButton}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -21,7 +21,6 @@ namespace hfupilot.app.ViewModels
         private ObservableCollection<TermineViewModel> stundenplan;
         private string filterName;
 
-        public ICommand FilterChanedCommand { get; }
         public ICommand LogoutCommand { get; }
 
         public int FilterID { get; set; }
@@ -32,8 +31,7 @@ namespace hfupilot.app.ViewModels
             {
                 filterName = value;
                 RaisePropertyChanged();
-                FilterChanedCommand.Execute(null);
-                Update();
+                FilterChaned();
             }
         }
 
@@ -60,14 +58,16 @@ namespace hfupilot.app.ViewModels
             StundenplanList = new ObservableCollection<TermineViewModel>();
 
             FilterID = 1;
-            FilterChanedCommand = new RelayCommand(FilterChanedHandler);
+            
             LogoutCommand = new RelayCommand(LogoutHandler);
-            Update();
 
         }
 
-        public void Update()
+        public void Update(bool setDefaultFilter = false)
         {
+            if(setDefaultFilter)
+                FilterName = "diese Woche";
+
             StundenplanList.Clear();
             Task<HttpResponseMessage> Response = _httpClient.GetAsync($"/api/Stundenplan/{_userContext.SessionID}/{FilterID}");
             Response.Wait();
@@ -81,7 +81,7 @@ namespace hfupilot.app.ViewModels
 
         }
 
-        public void FilterChanedHandler(object obj)
+        private void FilterChaned()
         {
             switch (FilterName)
             {
@@ -105,7 +105,7 @@ namespace hfupilot.app.ViewModels
         public void LogoutHandler(object obj)
         {
             Page page = obj as Page;
-            Task<HttpResponseMessage> Response = _httpClient.GetAsync($"/api/Authentifizierung/abmeldung/{_userContext.SessionID}");
+            Task<HttpResponseMessage> Response = _httpClient.GetAsync($"/api/Authentifizierung/{_userContext.SessionID}");
             Response.Wait();
 
             //Message auslessen
@@ -113,7 +113,7 @@ namespace hfupilot.app.ViewModels
             abmelden.Wait();
 
             BasisFehlerProperties objBasisFehler = JsonConvert.DeserializeObject<BasisFehlerProperties>(abmelden.Result);
-            if (objBasisFehler.Fehler != 0 && page != null)
+            if (objBasisFehler != null && page != null)
             {
                 if(objBasisFehler.Fehler == 0)
                 {
