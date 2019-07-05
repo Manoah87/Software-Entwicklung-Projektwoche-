@@ -8128,8 +8128,8 @@ namespace hfupilot.app.Droid
 			// aapt resource value: 0x7f0e016d
 			public const int Animation_Design_BottomSheetDialog = 2131624301;
 			
-			// aapt resource value: 0x7f0e0201
-			public const int AppCompatDialogStyle = 2131624449;
+			// aapt resource value: 0x7f0e0202
+			public const int AppCompatDialogStyle = 2131624450;
 			
 			// aapt resource value: 0x7f0e009d
 			public const int Base_AlertDialog_AppCompat = 2131624093;
@@ -8703,6 +8703,9 @@ namespace hfupilot.app.Droid
 			
 			// aapt resource value: 0x7f0e000e
 			public const int CardView_Light = 2131623950;
+			
+			// aapt resource value: 0x7f0e0201
+			public const int DrawerArrowStyle = 2131624449;
 			
 			// aapt resource value: 0x7f0e01ff
 			public const int MainTheme = 2131624447;
