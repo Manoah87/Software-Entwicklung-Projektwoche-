@@ -40,6 +40,7 @@ namespace hfupilot.app.Services
                 case MeldungenAnzeigenViewModel meldungenAnzeigenViewModel:
                     result = new MeldungenAnzeigenView();
                     result.BindingContext = meldungenAnzeigenViewModel;
+                    meldungenAnzeigenViewModel.Update();
                     break;
             }
 
