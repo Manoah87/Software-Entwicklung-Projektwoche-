@@ -26,6 +26,8 @@ namespace hfupilot.webapi.Controllers
 
         // POST api/<controller>
         [HttpPost]
+        [AllowAnonymous]
+        [Route("verspaetung")]
         public IActionResult Verspaetung([FromBody]VerspaetungParameter parameter)
         {
             try
@@ -72,6 +74,8 @@ namespace hfupilot.webapi.Controllers
 
         // POST api/<controller>
         [HttpPost]
+        [AllowAnonymous]
+        [Route("abwesenheit")]
         public IActionResult Abwesenheit([FromBody]VerspaetungParameter parameter)
         {
             try
@@ -116,6 +120,8 @@ namespace hfupilot.webapi.Controllers
 
         // POST api/<controller>
         [HttpPost]
+        [AllowAnonymous]
+        [Route("meldung")]
         public IActionResult Meldung([FromBody]MeldungParameter parameter)
         {
             try
@@ -123,11 +129,12 @@ namespace hfupilot.webapi.Controllers
                 var sessionID = new SqlParameter("i_SessionID", parameter.SessionID);
                 var id = new SqlParameter("i_ID", parameter.ID);
                 var meldung = new SqlParameter("i_Meldung", parameter.Meldung);
-                var aktiveBis = new SqlParameter("i_AktivBis", parameter.AktiveBis);
+                var aktiveBis = new SqlParameter("i_AktivBis",
+                                                parameter.AktiveBis);
                 var art = new SqlParameter("i_Art", parameter.Art);
 
                 SqlConnection conn = new SqlConnection(_configuration["ConnectionString"]);
-                SqlCommand cmd = new SqlCommand("EXECUTE dbo.pda_Abwesenheit @i_SessionID @i_ID @i_Meldung @i_AktivBis @i_Art", conn);
+                SqlCommand cmd = new SqlCommand("EXECUTE dbo.pda_Meldung @i_SessionID, @i_ID, @i_Meldung, @i_AktivBis, @i_Art", conn);
                 cmd.Parameters.Add(sessionID);
                 cmd.Parameters.Add(id);
                 cmd.Parameters.Add(meldung);
