@@ -29,7 +29,14 @@ namespace hfupilot.app.Services
                     result = new MeldungView();
                     result.BindingContext = meldungViewModel;
                     break;
-
+                case AbwesenheitViewModel abwesenheitViewModel:
+                    result = new AbwesenheitView();
+                    result.BindingContext = abwesenheitViewModel;
+                    break;
+                case VerspaetungViewModel verspaetungViewModel:
+                    result = new VerspaetungView();
+                    result.BindingContext = verspaetungViewModel;
+                    break;
                 case MeldungenAnzeigenViewModel meldungenAnzeigenViewModel:
                     result = new MeldungenAnzeigenView();
                     result.BindingContext = meldungenAnzeigenViewModel;

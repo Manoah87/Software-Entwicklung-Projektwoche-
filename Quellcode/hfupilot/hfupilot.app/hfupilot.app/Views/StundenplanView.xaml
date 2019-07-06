@@ -38,6 +38,7 @@
                       FlowDirection="LeftToRight" 
                       RowHeight="125"
                       HasUnevenRows="True"
+                      SelectionMode="None"
                       ItemsSource="{Binding StundenplanList, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

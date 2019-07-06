@@ -45,7 +45,7 @@
                 
                 <Button VerticalOptions="EndAndExpand" 
                         Text="Speichern" 
-                        Command="{Binding SpeichernCommand, Mode=TwoWay}" 
+                        Command="{Binding SpeichernCommand}" 
                         CommandParameter="{x:Reference Name=Page}" 
                         Style="{StaticResource DefaultButton}">
                 </Button>

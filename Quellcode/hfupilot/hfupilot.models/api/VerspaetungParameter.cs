@@ -9,6 +9,6 @@ namespace hfupilot.Models.api
         public int SessionID { get; set; }
         public int ID { get; set; }
         public int Anzal { get; set; }
-        public int Grund { get; set; }
+        public string Grund { get; set; }
     }
 }

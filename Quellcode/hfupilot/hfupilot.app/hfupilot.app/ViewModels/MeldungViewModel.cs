@@ -63,6 +63,7 @@ namespace hfupilot.app.ViewModels
                     iArt = 9;
                     break;
             }
+
             Page page = obj as Page;
             if (page != null)
             {

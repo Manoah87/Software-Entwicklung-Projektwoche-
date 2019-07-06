@@ -38,7 +38,7 @@ namespace hfupilot.webapi.Controllers
                 var grund = new SqlParameter("i_Grund", parameter.Grund);
 
                 SqlConnection conn = new SqlConnection(_configuration["ConnectionString"]);
-                SqlCommand cmd = new SqlCommand("EXECUTE dbo.pda_Verspaetung @i_SessionID @i_ID @i_Anzahl @i_Grund", conn);
+                SqlCommand cmd = new SqlCommand("EXECUTE dbo.pda_Verspaetung, @i_SessionID, @i_ID, @i_Anzahl, @i_Grund", conn);
                 cmd.Parameters.Add(sessionID);
                 cmd.Parameters.Add(id);
                 cmd.Parameters.Add(anzahl);
@@ -85,7 +85,7 @@ namespace hfupilot.webapi.Controllers
                 var grund = new SqlParameter("i_Grund", parameter.Grund);
 
                 SqlConnection conn = new SqlConnection(_configuration["ConnectionString"]);
-                SqlCommand cmd = new SqlCommand("EXECUTE dbo.pda_Abwesenheit @i_SessionID @i_ID @i_Anzahl @i_Grund", conn);
+                SqlCommand cmd = new SqlCommand("EXECUTE dbo.pda_Abwesenheit, @i_SessionID, @i_ID @i_Anzahl, @i_Grund", conn);
                 cmd.Parameters.Add(sessionID);
                 cmd.Parameters.Add(id);
                 cmd.Parameters.Add(grund);

@@ -21,6 +21,7 @@ namespace hfupilot.app.ViewModels
 
         private NavigationViewModel navigation;
         private ObservableCollection<TermineViewModel> termine;
+        private TermineViewModel selectedTermine;
         private readonly INavigation _navigation;
         private readonly IViewMapper _viewMapper;
         private readonly HttpClient _httpClient;
@@ -43,6 +44,28 @@ namespace hfupilot.app.ViewModels
             {
                 navigation = value;
                 RaisePropertyChanged();
+            }
+        }
+
+        public TermineViewModel SelectedTermine
+        {
+            get => selectedTermine;
+            set
+            {
+                selectedTermine = value;
+                RaisePropertyChanged();
+                if(DateTime.Parse(selectedTermine.Datum).Day == DateTime.Now.Day &&
+                   DateTime.Parse(selectedTermine.Datum).Month == DateTime.Now.Month || 1 == 1)
+                {
+                    // Wenn Termin Heute, dann kann nur eine Verspätung gemeldet werden
+                    _navigation.PushAsync(_viewMapper.Map(App.Services.GetInstance<VerspaetungViewModel>()));
+                }
+                else
+                {
+                    _navigation.PushAsync(_viewMapper.Map(App.Services.GetInstance<AbwesenheitViewModel>()));
+                    // Ansonsten eine Abweseneheit
+                }
+
             }
         }
 

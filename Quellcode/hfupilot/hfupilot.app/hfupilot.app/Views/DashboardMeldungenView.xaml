@@ -25,6 +25,7 @@
             <ListView RowHeight="100" 
                       Grid.Column="1" Grid.Row="1"
                       ItemsSource="{Binding Meldungen}" 
+                      SelectionMode="None"
                       HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>

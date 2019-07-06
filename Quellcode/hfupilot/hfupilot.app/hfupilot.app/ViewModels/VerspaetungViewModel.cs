@@ -5,6 +5,11 @@ using Xamarin.Forms;
 using hfupilot.app.Services;
 using hfupilot.app.Helper;
 using System.Net.Http;
+using hfupilot.Models.api;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using hfupilot.Models;
 
 namespace hfupilot.app.ViewModels
 {
@@ -18,9 +23,11 @@ namespace hfupilot.app.ViewModels
         private readonly INavigation _navigation;
         private readonly IViewMapper _viewMapper;
         private readonly HttpClient _httpClient;
+        private readonly UserContext _userContext;
 
-        public ICommand SpeichernCommand { get; set; }
+        public ICommand SpeichernCommand { get;}
 
+        
         public VerspaetungViewModel(INavigation navigation,
             IViewMapper viewMapper,
             UserContext userContext,
@@ -31,6 +38,7 @@ namespace hfupilot.app.ViewModels
             _httpClient = httpClient;
 
             _begruendung = "";
+            _userContext = userContext;
 
             _verspeatungsAuswahlsliste = new List<string>();
             _verspeatungsAuswahlsliste.Add("Verspätung Wählen");
@@ -44,8 +52,39 @@ namespace hfupilot.app.ViewModels
 
         public void SpeichernHandler(object obj)
         {
-            ((Page)obj).DisplayAlert("Auswahl", $"index: {_verspaetungAuswahl} \n ausrede: {_begruendung}", "OK");
+            TermineViewModel selectedTermin = App.Services.GetInstance<DashboardTermineViewModel>().SelectedTermine;
 
+            VerspaetungParameter verspaetungParameter = new VerspaetungParameter()
+            {
+                Anzal = AusgewaelteVerspaetung,
+                Grund = Begruendung,
+                ID = selectedTermin.Id,
+                SessionID = _userContext.SessionID
+            };
+
+            var content = new StringContent(JsonConvert.SerializeObject(verspaetungParameter),
+                             Encoding.UTF8, "application/json");
+
+            //Request an Web-API senden.
+            Task<HttpResponseMessage> Response = _httpClient.PostAsync("/api/Meldungen/verspaetung", content);
+            Response.Wait();
+
+            //Message auslessen
+            Task<string> reponseContent = Response.Result.Content.ReadAsStringAsync();
+            reponseContent.Wait();
+
+            BasisFehlerProperties result = JsonConvert.DeserializeObject<BasisFehlerProperties>(reponseContent.Result);
+
+            if (result.Fehler == 0)
+            {
+                ((Page)obj).DisplayAlert("Meldung", "Meldung wurde gespeichert", "OK");
+                Begruendung = "";
+                _navigation.PopAsync();
+            }
+            else
+            {
+                ((Page)obj).DisplayAlert("Fehler", result.FehlerMeldung, "OK");
+            }
         }
 
         public bool CanExecuteSpeichern(object obj)

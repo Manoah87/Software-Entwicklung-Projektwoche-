@@ -27,6 +27,7 @@
                       RowHeight="125"
                       VerticalScrollBarVisibility="Default"
                       HasUnevenRows="True"
+                      SelectedItem="{Binding SelectedTermine, Mode=TwoWay}"
                       ItemsSource="{Binding TerminListe, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
