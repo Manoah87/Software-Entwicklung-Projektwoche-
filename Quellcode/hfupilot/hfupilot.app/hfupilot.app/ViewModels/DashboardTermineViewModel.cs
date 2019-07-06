@@ -55,7 +55,7 @@ namespace hfupilot.app.ViewModels
                 selectedTermine = value;
                 RaisePropertyChanged();
                 if(DateTime.Parse(selectedTermine.Datum).Day == DateTime.Now.Day &&
-                   DateTime.Parse(selectedTermine.Datum).Month == DateTime.Now.Month || 1 == 1)
+                   DateTime.Parse(selectedTermine.Datum).Month == DateTime.Now.Month)
                 {
                     // Wenn Termin Heute, dann kann nur eine Verspätung gemeldet werden
                     _navigation.PushAsync(_viewMapper.Map(App.Services.GetInstance<VerspaetungViewModel>()));

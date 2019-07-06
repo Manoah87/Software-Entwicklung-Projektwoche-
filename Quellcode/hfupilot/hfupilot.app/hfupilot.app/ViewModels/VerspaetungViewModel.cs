@@ -25,7 +25,7 @@ namespace hfupilot.app.ViewModels
         private readonly HttpClient _httpClient;
         private readonly UserContext _userContext;
 
-        public ICommand SpeichernCommand { get;}
+        public ICommand SpeichernCommand { get; }
 
         
         public VerspaetungViewModel(INavigation navigation,
