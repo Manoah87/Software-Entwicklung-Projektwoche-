@@ -17,7 +17,7 @@ mysqlclient-deps==0.0.2
 mysql-connector-python==8.0.13
 Pillow==5.3.0
 pip==18.1
-protobuf==3.6.1
+protobuf==3.15.0
 pycparser==2.18
 PyMySQL==0.9.2
 PyMysqlDB==0.0.2
