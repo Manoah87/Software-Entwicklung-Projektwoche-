@@ -24,7 +24,7 @@ PyMysqlDB==0.0.2
 pytz==2018.5
 pywebuml==0.3.0
 RPi.GPIO-def==0.2
-setuptools==39.0.1
+setuptools==65.5.1
 six==1.11.0
 SQLAlchemy==1.2.13
 traceback2==1.4.0
